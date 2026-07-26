@@ -48,11 +48,11 @@ export default function Navbar() {
           className="flex items-center space-x-2.5 cursor-pointer group"
         >
           {/* CBite Official Logo */}
-          <div className="h-9 w-9 overflow-hidden flex items-center justify-center rounded-lg bg-white border border-slate-100/80 shadow-2xs transition-transform group-hover:scale-105 shrink-0">
+          <div className="h-9 w-9 flex items-center justify-center rounded-lg bg-white border border-slate-100/80 shadow-2xs transition-transform group-hover:scale-105 shrink-0">
             <img 
               src="/assets/logo.png" 
               alt="CBite logo mark" 
-              className="h-14 w-14 max-w-none object-contain -translate-y-[6px]" 
+              className="h-7 w-7 object-contain" 
             />
           </div>
           <span className="font-bold text-xl tracking-tight text-brand-blue-950 transition-colors group-hover:text-brand-blue-500">

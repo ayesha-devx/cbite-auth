@@ -24,11 +24,11 @@ export default function Footer() {
           {/* Left Column: Brand Info */}
           <div className="md:col-span-6 space-y-4">
             <div className="flex items-center space-x-2.5">
-              <div className="h-8 w-8 overflow-hidden flex items-center justify-center rounded-lg bg-white border border-slate-100/80 shadow-3xs shrink-0">
+              <div className="h-8 w-8 flex items-center justify-center rounded-lg bg-white border border-slate-100/80 shadow-3xs shrink-0">
                 <img 
                   src="/assets/logo.png" 
                   alt="CBite logo mark" 
-                  className="h-12 w-12 max-w-none object-contain -translate-y-[5.2px]" 
+                  className="h-6 w-6 object-contain" 
                 />
               </div>
               <span className="font-bold text-lg text-brand-blue-950">CBite</span>
