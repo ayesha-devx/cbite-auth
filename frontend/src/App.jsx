@@ -2,6 +2,8 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
+import WhatWeDo from './components/WhatWeDo';
+import HowItWorks from './components/HowItWorks';
 import Features from './components/Features';
 import AuthSection from './components/AuthSection';
 import CTA from './components/CTA';
@@ -17,6 +19,8 @@ function App() {
       <main className="flex-1">
         <Hero />
         <About />
+        <WhatWeDo />
+        <HowItWorks />
         <Features />
         <AuthSection />
         <CTA />

@@ -75,6 +75,12 @@ export default function Navbar() {
             About
           </button>
           <button
+            onClick={() => scrollToSection('what-we-do')}
+            className="text-sm font-medium text-slate-600 hover:text-brand-blue-500 cursor-pointer transition-colors"
+          >
+            What We Do
+          </button>
+          <button
             onClick={() => scrollToSection('features')}
             className="text-sm font-medium text-slate-600 hover:text-brand-blue-500 cursor-pointer transition-colors"
           >
@@ -121,6 +127,12 @@ export default function Navbar() {
             className="text-left py-2 text-base font-medium text-slate-600 hover:text-brand-blue-500 transition-colors cursor-pointer"
           >
             About
+          </button>
+          <button
+            onClick={() => scrollToSection('what-we-do')}
+            className="text-left py-2 text-base font-medium text-slate-600 hover:text-brand-blue-500 transition-colors cursor-pointer"
+          >
+            What We Do
           </button>
           <button
             onClick={() => scrollToSection('features')}

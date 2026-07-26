@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, ShieldCheck, KeyRound, Cpu, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles, Compass, Rocket, TrendingUp } from 'lucide-react';
 
 export default function Hero() {
   const scrollToSection = (id) => {
@@ -17,7 +17,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-slate-50">
+    <section id="hero" className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-slate-50 border-b border-slate-100">
       {/* Background Decorative Graphic */}
       <div className="absolute top-0 right-0 -z-10 w-1/2 h-full opacity-60 pointer-events-none hidden md:block">
         <div className="absolute top-1/4 right-1/4 w-[450px] h-[450px] bg-brand-blue-500/5 rounded-full blur-3xl"></div>
@@ -29,6 +29,11 @@ export default function Hero() {
           
           {/* Left Column Content */}
           <div className="md:col-span-7 flex flex-col items-start space-y-6 text-left animate-fade-in">
+            {/* Eyebrow Label */}
+            <span className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-brand-blue-50 border border-brand-blue-100 text-[10px] font-bold text-brand-blue-600 uppercase tracking-widest">
+              <Sparkles className="w-3.5 h-3.5 text-brand-blue-500" />
+              <span>FROM IDEA TO IMPACT</span>
+            </span>
 
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-blue-950 tracking-tight leading-[1.1]">
@@ -37,12 +42,12 @@ export default function Hero() {
             </h1>
 
             {/* Supporting Text */}
-            <p className="text-base sm:text-lg text-slate-600 max-w-xl leading-relaxed">
-              Discover a modern digital experience built around simplicity, accessibility and seamless interaction.
+            <p className="text-base sm:text-lg text-slate-650 max-w-xl leading-relaxed">
+              Transform ideas into meaningful digital experiences with a platform built for innovation, simplicity and growth.
             </p>
 
             {/* Company Tagline */}
-            <div className="border-l-2 border-brand-blue-200 pl-4 py-1.5 text-sm italic text-slate-500 font-medium">
+            <div className="border-l-2 border-brand-blue-500 pl-4 py-1.5 text-sm italic text-slate-500 font-medium">
               "C the Idea, Bite the Market."
             </div>
 
@@ -57,94 +62,53 @@ export default function Hero() {
               </button>
               <button
                 onClick={() => scrollToSection('about')}
-                className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-slate-700 bg-white border border-slate-200 rounded-lg shadow-xs hover:bg-slate-50 hover:border-slate-300 hover:-translate-y-0.5 transition-all active:translate-y-0 cursor-pointer"
+                className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-slate-700 bg-white border border-slate-200 rounded-lg shadow-xs hover:bg-slate-50 hover:border-slate-350 hover:-translate-y-0.5 transition-all active:translate-y-0 cursor-pointer"
               >
-                Learn More
+                Explore CBite
               </button>
             </div>
 
             {/* Trust Line */}
             <div className="flex items-center space-x-4 pt-4 border-t border-slate-200/60 w-full text-xs font-semibold text-slate-400 tracking-wider uppercase">
-              <span>Simple</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
-              <span>Modern</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
-              <span>Secure</span>
+              <span>Idea</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-slate-350"></span>
+              <span>Build</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-slate-350"></span>
+              <span>Launch</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-slate-350"></span>
+              <span>Grow</span>
             </div>
           </div>
 
-          {/* Right Column Abstract Visual Graphic */}
-          <div className="md:col-span-5 relative w-full h-[320px] sm:h-[400px] flex items-center justify-center animate-fade-in-delayed">
-            {/* Background Accent Grid or Circles */}
+          {/* Right Column Premium Visual Graphic */}
+          <div className="md:col-span-5 relative w-full flex items-center justify-center animate-fade-in-delayed">
+            {/* Background Accent Grid */}
             <div className="absolute inset-0 bg-[radial-gradient(#2563eb_1.5px,transparent_1.5px)] [background-size:24px_24px] opacity-15"></div>
             
-            {/* Core CSS Graphic Layout */}
-            <div className="relative w-full max-w-[340px] aspect-square flex items-center justify-center">
-              
-              {/* Outer Glow Ring */}
-              <div className="absolute w-[80%] h-[80%] rounded-full border border-brand-blue-200/50 animate-[spin_20s_linear_infinite] pointer-events-none">
-                <div className="absolute top-0 left-1/2 w-2 h-2 -ml-1 rounded-full bg-brand-blue-400 shadow-md shadow-brand-blue-500"></div>
-              </div>
-
-              {/* Main Visual Board / Mock Console */}
-              <div className="w-[85%] h-[85%] bg-white rounded-2xl border border-slate-200 shadow-xl p-5 flex flex-col justify-between relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-blue-500/5 rounded-bl-full pointer-events-none"></div>
-
-                {/* Console Header */}
-                <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-                  <div className="flex space-x-1.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-slate-200"></span>
-                    <span className="w-2.5 h-2.5 rounded-full bg-slate-200"></span>
-                    <span className="w-2.5 h-2.5 rounded-full bg-slate-200"></span>
+            {/* Startup Pipeline Visual Stack */}
+            <div className="relative w-full max-w-[360px] flex flex-col space-y-4 py-8 relative z-10">
+              {[
+                { label: 'IDEA', desc: 'Explore and validate possibilities', color: 'bg-brand-blue-50 border-brand-blue-100 text-brand-blue-600', icon: <Compass className="w-4 h-4" /> },
+                { label: 'BUILD', desc: 'Craft meaningful digital experiences', color: 'bg-indigo-50 border-indigo-100 text-indigo-600', icon: <Sparkles className="w-4 h-4" /> },
+                { label: 'LAUNCH', desc: 'Deploy digital products to the market', color: 'bg-violet-50 border-violet-100 text-violet-600', icon: <Rocket className="w-4 h-4" /> },
+                { label: 'GROW', desc: 'Scale, optimize, and bite the market', color: 'bg-emerald-50 border-emerald-100 text-emerald-600', icon: <TrendingUp className="w-4 h-4" /> }
+              ].map((card, idx) => (
+                <div 
+                  key={idx} 
+                  className="flex items-center space-x-4 p-4 border border-slate-150 rounded-2xl shadow-xs transition-all hover:scale-102 hover:shadow-sm bg-white relative overflow-hidden group"
+                >
+                  <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${card.color.split(' ')[0]} ${card.color.split(' ')[2]}`}>
+                    {card.icon}
                   </div>
-                  <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-widest">Console v1.0</span>
-                </div>
-
-                {/* Simulated Security Card */}
-                <div className="flex items-center space-x-3.5 p-3 rounded-xl bg-slate-50 border border-slate-100 shadow-xs mt-4">
-                  <div className="w-10 h-10 rounded-lg bg-brand-blue-50 flex items-center justify-center text-brand-blue-500">
-                    <ShieldCheck className="w-5 h-5" />
+                  <div className="text-left flex-1">
+                    <h4 className="text-xs font-bold text-slate-800 tracking-wider uppercase">{card.label}</h4>
+                    <p className="text-[10px] text-slate-400 mt-0.5 leading-normal">{card.desc}</p>
                   </div>
-                  <div className="flex-1 text-left">
-                    <div className="h-2 w-24 bg-brand-blue-500/80 rounded-sm mb-1.5"></div>
-                    <div className="h-1.5 w-16 bg-slate-200 rounded-sm"></div>
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-100/70 font-black text-3xl select-none pointer-events-none tracking-widest font-sans">
+                    {card.label}
                   </div>
                 </div>
-
-                {/* Simulated Key Card */}
-                <div className="flex items-center space-x-3.5 p-3 rounded-xl bg-slate-50 border border-slate-100 shadow-xs">
-                  <div className="w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center text-slate-500">
-                    <KeyRound className="w-5 h-5" />
-                  </div>
-                  <div className="flex-1 text-left">
-                    <div className="h-2 w-20 bg-slate-300 rounded-sm mb-1.5"></div>
-                    <div className="h-1.5 w-28 bg-slate-200/80 rounded-sm"></div>
-                  </div>
-                </div>
-
-                {/* Mini Metric Row */}
-                <div className="flex items-center justify-between pt-3 border-t border-slate-100 text-[10px] font-semibold text-slate-400">
-                  <span className="flex items-center">
-                    <Cpu className="w-3.5 h-3.5 mr-1 text-brand-blue-400" /> API Gateway
-                  </span>
-                  <span className="text-emerald-500 flex items-center">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1.5 animate-ping"></span> Active
-                  </span>
-                </div>
-              </div>
-
-              {/* Float badge 1 */}
-              <div className="absolute -top-3 -right-2 p-3 bg-white rounded-lg border border-slate-200 shadow-md flex items-center space-x-2 animate-[bounce_5s_infinite]">
-                <div className="w-2.5 h-2.5 rounded-full bg-brand-blue-500"></div>
-                <span className="text-[10px] font-bold text-brand-blue-950">OAuth 2.0 Ready</span>
-              </div>
-
-              {/* Float badge 2 */}
-              <div className="absolute -bottom-2 -left-3 p-3 bg-white rounded-lg border border-slate-200 shadow-md flex items-center space-x-2 animate-[bounce_6s_infinite_delayed]">
-                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
-                <span className="text-[10px] font-bold text-brand-blue-950">OTP Secure</span>
-              </div>
-
+              ))}
             </div>
           </div>
 

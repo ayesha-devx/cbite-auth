@@ -23,10 +23,10 @@ export default function CTA() {
 
       <div className="relative max-w-5xl mx-auto px-6 lg:px-8 space-y-6">
         <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-          Ready to Get Started?
+          Ready to Turn Your Idea<br />Into Possibility?
         </h2>
         <p className="text-sm sm:text-base text-slate-300 max-w-xl mx-auto leading-relaxed">
-          Access CBite through a simple and secure sign-in experience.
+          Join CBite and take the first step from idea to impact.
         </p>
 
         <div className="pt-4">

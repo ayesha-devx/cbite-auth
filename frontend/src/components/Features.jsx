@@ -1,47 +1,51 @@
 import React from 'react';
-import { LayoutGrid, Cpu, Lock } from 'lucide-react';
+import { Eye, Cpu, Sparkles, TrendingUp } from 'lucide-react';
 
 export default function Features() {
   const cards = [
     {
       num: '01',
       title: 'Simple',
-      desc: 'Clean experiences designed to keep interactions straightforward and intuitive.',
-      icon: <LayoutGrid className="w-6 h-6 text-brand-blue-500" />
+      desc: 'Clear and thoughtful experiences designed around what actually matters.',
+      icon: <Eye className="w-6 h-6 text-brand-blue-500" />
     },
     {
       num: '02',
       title: 'Modern',
-      desc: 'A contemporary digital experience built with modern technologies.',
+      desc: 'A contemporary approach to building digital experiences for today\'s users.',
       icon: <Cpu className="w-6 h-6 text-brand-blue-500" />
     },
     {
       num: '03',
-      title: 'Secure',
-      desc: 'Authentication experiences designed with security and user trust in mind.',
-      icon: <Lock className="w-6 h-6 text-brand-blue-500" />
+      title: 'Innovative',
+      desc: 'An idea-first mindset focused on exploring better possibilities.',
+      icon: <Sparkles className="w-6 h-6 text-brand-blue-500" />
+    },
+    {
+      num: '04',
+      title: 'Growth-Focused',
+      desc: 'Built with the ambition to move ideas forward and create lasting opportunities.',
+      icon: <TrendingUp className="w-6 h-6 text-brand-blue-500" />
     }
   ];
 
   return (
-    <section id="features" className="py-20 md:py-28 bg-slate-50">
+    <section id="features" className="py-20 md:py-28 bg-slate-50 border-b border-slate-100 scroll-mt-16">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
           <span className="text-xs font-semibold uppercase tracking-wider text-brand-blue-500">
-            Why CBite
+            WHY CBITE
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-blue-950 tracking-tight">
             Built Around Better Experiences
           </h2>
-          <p className="text-sm sm:text-base text-slate-650 max-w-xl mx-auto">
-            We focus on constructing elegant user flows, making it simple to access secure endpoints.
-          </p>
+          <div className="w-12 h-1 bg-brand-blue-500 rounded-full mx-auto mt-4"></div>
         </div>
 
         {/* Features Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {cards.map((card, idx) => (
             <div
               key={idx}
@@ -59,12 +63,12 @@ export default function Features() {
                 </div>
 
                 {/* Card Title */}
-                <h3 className="text-xl font-bold text-brand-blue-950 mb-3 group-hover:text-brand-blue-500 transition-colors">
+                <h3 className="text-xl font-bold text-brand-blue-950 mb-3 group-hover:text-brand-blue-500 transition-colors tracking-tight">
                   {card.title}
                 </h3>
 
                 {/* Card Description */}
-                <p className="text-sm sm:text-base text-slate-550 leading-relaxed">
+                <p className="text-sm sm:text-base text-slate-500 leading-relaxed">
                   {card.desc}
                 </p>
               </div>

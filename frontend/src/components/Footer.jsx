@@ -62,6 +62,14 @@ export default function Footer() {
                 </li>
                 <li>
                   <button 
+                    onClick={() => scrollToSection('what-we-do')} 
+                    className="text-slate-500 hover:text-brand-blue-500 transition-colors cursor-pointer"
+                  >
+                    What We Do
+                  </button>
+                </li>
+                <li>
+                  <button 
                     onClick={() => scrollToSection('features')} 
                     className="text-slate-500 hover:text-brand-blue-500 transition-colors cursor-pointer"
                   >

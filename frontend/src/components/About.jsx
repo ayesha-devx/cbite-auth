@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function About() {
   return (
-    <section id="about" className="py-20 md:py-28 bg-white border-y border-slate-100">
+    <section id="about" className="py-20 md:py-28 bg-white border-b border-slate-100 scroll-mt-16">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         
         {/* Split Grid Layout */}
@@ -23,11 +23,11 @@ export default function About() {
           {/* Right Column: Copy & Tagline Statement */}
           <div className="lg:col-span-7 text-left space-y-6">
             <p className="text-base sm:text-lg text-slate-650 leading-relaxed font-light">
-              CBite is driven by ideas, innovation and the ambition to turn possibilities into meaningful opportunities.
+              CBite is built around a simple belief: great ideas deserve the opportunity to become something meaningful.
             </p>
 
-            <p className="text-sm sm:text-base text-slate-550 leading-relaxed">
-              Guided by the philosophy 'C the Idea, Bite the Market.', CBite represents a forward-looking approach to ideas and growth.
+            <p className="text-sm sm:text-base text-slate-500 leading-relaxed">
+              We bring together innovation, thoughtful execution and a growth-focused mindset to help transform possibilities into digital experiences ready for the real world. Guided by our philosophy, <strong className="text-slate-600 font-semibold font-sans">"C the Idea, Bite the Market."</strong>
             </p>
           </div>
 

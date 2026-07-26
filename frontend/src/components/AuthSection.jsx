@@ -288,13 +288,13 @@ export default function AuthSection() {
           {/* Left Column: Brand & Security Information */}
           <div className="lg:col-span-6 text-left space-y-6 lg:pr-6">
             <span className="text-xs font-semibold uppercase tracking-wider text-brand-blue-500">
-              Identity & Access
+              GET STARTED
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-blue-950 tracking-tight leading-tight">
-              Simple and Secure Access
+              Join CBite
             </h2>
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl">
-              Choose your preferred sign-in method to securely access your CBite account.
+              Sign in or create your CBite account to start exploring what's possible.
             </p>
 
             <div className="pt-4 border-t border-slate-100 space-y-4">
@@ -366,8 +366,8 @@ export default function AuthSection() {
                   {step === 'email' && !isAuthenticated && (
                     <div className="space-y-6">
                       <div className="text-left">
-                        <h3 className="text-2xl font-bold text-brand-blue-950">Welcome to CBite</h3>
-                        <p className="text-xs sm:text-sm text-slate-500 mt-1">Sign in or create your account to continue.</p>
+                        <h3 className="text-2xl font-bold text-brand-blue-950">Join CBite</h3>
+                        <p className="text-xs sm:text-sm text-slate-500 mt-1">Sign in or create your CBite account to start exploring what's possible.</p>
                       </div>
 
                       {/* Social Buttons */}
