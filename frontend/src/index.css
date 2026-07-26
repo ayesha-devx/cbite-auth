@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-blue-50: #eff6ff;
+  --color-brand-blue-100: #dbeafe;
+  --color-brand-blue-200: #bfdbfe;
+  --color-brand-blue-300: #93c5fd;
+  --color-brand-blue-400: #60a5fa;
+  --color-brand-blue-500: #2563eb; /* Primary accent: CBite-inspired Blue */
+  --color-brand-blue-600: #1d4ed8;
+  --color-brand-blue-700: #1e40af;
+  --color-brand-blue-800: #1e3a8a;
+  --color-brand-blue-900: #172554;
+  --color-brand-blue-950: #0f172a;
+  
+  --color-brand-navy-900: #0b0f19;
+  --color-brand-navy-950: #05070c;
+  
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Custom styles for smooth scrolling and clean styling */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #fafafa; /* White / very light background */
+  color: #4b5563; /* Neutral grey body text */
+}
+
+/* Accessible focus ring style */
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-brand-blue-500);
+  outline-offset: 2px;
+}
+
+/* Simple animation utility classes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in-delayed {
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
