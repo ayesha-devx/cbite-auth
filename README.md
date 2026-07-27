@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="frontend/public/assets/logo.png" alt="CBite Logo" width="80" />
+</p>
+
 # CBite
 
 **C the Idea, Bite the Market.**
