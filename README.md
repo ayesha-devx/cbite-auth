@@ -10,7 +10,7 @@
 CBite is a modern, full-stack authentication platform built with React and Express.js, featuring multi-provider OAuth (Google, GitHub), secure email OTP verification via the Resend API, and JWT-based session management. Designed with a responsive, premium landing page and production-grade deployment architecture.
 </p>
 
----
+
 
 ## Live Demo
 
