@@ -24,17 +24,23 @@
 
 ---
 
-## 📌 Project Overview
+## About CBite
 
-**CBite** is a full-stack technology platform that transforms digital concepts into market-ready opportunities. The platform integrates a modern, responsive startup landing page with a complete authentication system.
+CBite is a full-stack web application combining a modern startup landing page with a complete authentication system.
 
-Built using a modular **Node.js + Express.js architecture**, CBite implements persistent data modeling via MongoDB Atlas, session restoration via HTTP-Only JWT tokens, and OAuth credentials mapping via Passport.js.
+The application provides multiple ways for users to securely access their account through:
+- Email OTP Authentication
+- Google OAuth 2.0
+- GitHub OAuth
+- HTTP-Only Cookie Sessions
+
+The backend is built using a structured Node.js + Express.js architecture, with MongoDB for persistent user data and Passport.js for OAuth authentication.
 
 ---
 
-## ⚡ Key Features
+## Key Features
 
-### 🔐 Authentication & Session Security
+### Authentication and Session Management
 - **Email OTP**: 6-digit cryptographically generated one-time verification codes sent directly to user inboxes.
 - **Expiry Rules**: OTP tokens automatically expire after 5 minutes (enforced via Mongoose TTL indexes).
 - **OAuth Integrations**: Seamless sign-in redirects for Google OAuth 2.0 and GitHub OAuth.
@@ -42,7 +48,7 @@ Built using a modular **Node.js + Express.js architecture**, CBite implements pe
 - **Secure Sessions**: Signed JSON Web Tokens (JWT) stored in HTTP-Only, SameSite cookies to protect against XSS and CSRF attacks.
 - **Instant UI Updates**: Lifted React states ensure navigational links ("Sign In" ➔ "Account") and left/right UI containers transition immediately upon logging in or out without browser refreshes.
 
-### ⚙️ Backend Architecture
+### Backend and Database
 - **Layered Flow**: Clean division of concerns following the `Router` ➔ `Middleware` ➔ `Controller` ➔ `Service` ➔ `Model` design pattern.
 - **Custom Rate Limiting**: Strict middleware restricting OTP requests to 1 request per minute per IP/email address to prevent spam.
 - **Global Error Handling**: Centralized catch-all Express middleware mapping normalized exception payloads.
@@ -50,9 +56,9 @@ Built using a modular **Node.js + Express.js architecture**, CBite implements pe
 
 ---
 
-## 🛠️ Technology Stack
+## Tech Stack
 
-| Component | Technologies |
+| Layer | Technologies |
 | :--- | :--- |
 | **Frontend** | React 19, Vite, Tailwind CSS, Lucide React Icons |
 | **Backend** | Node.js, Express.js (ES Modules) |
@@ -63,7 +69,9 @@ Built using a modular **Node.js + Express.js architecture**, CBite implements pe
 
 ---
 
-# 🏗️ Backend System Flow
+# Backend Architecture
+
+The backend follows a layered architecture to separate HTTP handling, authentication logic, business logic, and database operations.
 
 ```text
                   CLIENT
@@ -101,7 +109,9 @@ HTTP Request ➔ Route Definition ➔ Middleware (Rate Limiter/Auth) ➔ Control
 
 ---
 
-# 📂 Project Structure
+<details>
+<summary><b>📂 View Project Folder Directory</b></summary>
+<br>
 
 ```text
 cbite-auth/
@@ -157,10 +167,28 @@ cbite-auth/
     ├── package.json
     └── vite.config.js
 ```
+</details>
 
 ---
 
-# 🌐 API Reference
+<details>
+<summary><b>🔐 View Authentication Flow Diagrams</b></summary>
+<br>
+
+### Email OTP Flow
+```text
+User enters email ➔ POST /api/auth/otp/send ➔ Generate 6-digit OTP ➔ Store OTP + Expiry ➔ Send OTP via SMTP ➔ User enters OTP ➔ POST /api/auth/otp/verify ➔ Validate OTP ➔ Create/Link User ➔ Generate JWT ➔ HTTP-Only Cookie ➔ Authenticated
+```
+
+### Google & GitHub OAuth Flow
+```text
+Continue with Provider ➔ GET /api/auth/[provider] ➔ Provider Authorization ➔ Callback Endpoint ➔ Passport Strategy ➔ Find/Create/Link User ➔ Generate JWT ➔ Set HTTP-Only Cookie ➔ Redirect to Frontend ➔ Authenticated
+```
+</details>
+
+---
+
+# API Reference
 
 ### Authentication Endpoints
 
@@ -183,7 +211,7 @@ cbite-auth/
 
 ---
 
-# 🛡️ Security Features
+# Security Features
 
 > [!IMPORTANT]
 > - **HttpOnly Cookies**: Prevents client-side scripts from reading the JWT cookie, mitigating XSS risks.
@@ -193,9 +221,11 @@ cbite-auth/
 
 ---
 
-# 🗄️ Database Schemas
+<details>
+<summary><b>🗄️ View Mongoose Database Models</b></summary>
+<br>
 
-### User Model
+### User Schema Model
 ```text
 User
 ├── name (String, optional)
@@ -209,9 +239,15 @@ User
 └── timestamps (createdAt, updatedAt)
 ```
 
+### Authentication Providers
+```text
+authProviders: ["email", "google", "github"]
+```
+</details>
+
 ---
 
-# ⚙️ Local Development
+# Local Development
 
 ### 1. Repository Setup
 ```bash
