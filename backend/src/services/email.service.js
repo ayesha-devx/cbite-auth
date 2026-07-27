@@ -29,7 +29,8 @@ export const sendOtpEmail = async (email, code) => {
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS
-    }
+    },
+    family: 4 // Force IPv4 to prevent connect ENETUNREACH IPv6 issues on Render
   });
 
   const htmlContent = `
