@@ -1,37 +1,19 @@
-import nodemailer from 'nodemailer';
-
 /**
  * Transmits verification email containing the 6-digit code to the recipient.
- * If SMTP keys are missing, prints the OTP directly in local logs for testing.
+ * If Resend API key is missing, prints the OTP directly in local logs for testing.
  * @param {string} email - Destination email address
  * @param {string} code - 6-digit plaintext code
  * @returns {Promise<boolean>} - True on successful dispatch or mock fallback
  */
 export const sendOtpEmail = async (email, code) => {
-  const host = process.env.SMTP_HOST;
-  const port = process.env.SMTP_PORT;
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
-  const from = process.env.SMTP_FROM_EMAIL || 'info@cbite.com';
+  const apiKey = process.env.RESEND_API_KEY;
 
-  // Check if SMTP is configured
-  if (!host || !port || !user || !pass) {
-    console.warn('\n[SMTP WARNING] SMTP parameters are missing from environment config.');
+  // Check if Resend is configured
+  if (!apiKey) {
+    console.warn('\n[Resend WARNING] RESEND_API_KEY is missing from environment config.');
     console.log(`[DEV MOCK MAILBOX] Verification OTP for ${email} is: ${code}\n`);
     return true; // Return true to allow dev tests to proceed
   }
-
-  // Create transporter configuration
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: Number(process.env.SMTP_PORT),
-    secure: Number(process.env.SMTP_PORT) === 465, // secure: false for port 587 (STARTTLS)
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS
-    },
-    family: 4 // Force IPv4 to prevent connect ENETUNREACH IPv6 issues on Render
-  });
 
   const htmlContent = `
     <!DOCTYPE html>
@@ -136,17 +118,32 @@ export const sendOtpEmail = async (email, code) => {
   `;
 
   try {
-    const info = await transporter.sendMail({
-      from: `"CBite" <${from}>`,
-      to: email,
-      subject: 'Your CBite verification code',
-      text: `Your CBite verification code is ${code}. This code expires in 5 minutes and can only be used once. If you did not request this code, you can ignore this email.`,
-      html: htmlContent
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`
+      },
+      body: JSON.stringify({
+        from: 'CBite <onboarding@resend.dev>',
+        to: email,
+        subject: 'Your CBite verification code',
+        text: `Your CBite verification code is ${code}. This code expires in 5 minutes and can only be used once. If you did not request this code, you can ignore this email.`,
+        html: htmlContent
+      })
     });
-    console.log('[SMTP DISPATCH] Verification email sent successfully');
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      console.error('[Resend API ERROR] Failed to send verification email:', data);
+      throw new Error(`Resend transmission failed: ${data.message || 'Unknown error'}`);
+    }
+
+    console.log('[Resend DISPATCH] Verification email sent successfully:', data.id);
     return true;
   } catch (error) {
-    console.error('[SMTP ERROR] Failed to send verification email:', error.message);
-    throw new Error('SMTP transmittal failed. Verify credentials in your env settings.');
+    console.error('[Resend ERROR] Failed to send verification email:', error.message);
+    throw new Error('Resend transmittal failed. Verify API key in your env settings.');
   }
 };
