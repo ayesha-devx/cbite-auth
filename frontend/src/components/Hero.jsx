@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, Sparkles, Compass, Rocket, TrendingUp } from 'lucide-react';
+import { AnimatedGradientText } from './ui/AnimatedGradientText';
 
 export default function Hero() {
   const scrollToSection = (id) => {
@@ -17,7 +18,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="relative pt-24 pb-12 sm:pt-32 sm:pb-16 md:pt-40 md:pb-28 overflow-hidden bg-slate-50 border-b border-slate-100">
+    <section id="hero" className="relative pt-24 pb-12 sm:pt-32 sm:pb-16 md:pt-40 md:pb-28 overflow-hidden bg-gradient-to-b from-brand-blue-100/40 via-brand-blue-50/20 to-white border-b border-slate-100">
       {/* Background Decorative Graphic */}
       <div className="absolute top-0 right-0 -z-10 w-1/2 h-full opacity-60 pointer-events-none hidden md:block">
         <div className="absolute top-1/4 right-1/4 w-[450px] h-[450px] bg-brand-blue-500/5 rounded-full blur-3xl"></div>
@@ -27,18 +28,17 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 items-center">
           
-          {/* Left Column Content */}
-          <div className="md:col-span-7 flex flex-col items-start space-y-6 text-left animate-fade-in">
-            {/* Eyebrow Label */}
-            <span className="inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-full bg-brand-blue-50/60 border border-brand-blue-100/80 text-[10px] font-extrabold text-brand-blue-600 uppercase tracking-widest shadow-[0_2px_10px_rgba(37,99,235,0.03)]">
-              <Sparkles className="w-3.5 h-3.5 text-brand-blue-500 animate-pulse" />
-              <span>FROM IDEA TO IMPACT</span>
-            </span>
+            {/* Left Column Content */}
+            <div className="md:col-span-7 flex flex-col items-start space-y-6 text-left animate-fade-in">
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-brand-blue-950 tracking-tight leading-[1.1]">
-              Turning Ideas <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue-650 via-indigo-600 to-brand-blue-500">Into Possibilities.</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1]">
+              <AnimatedGradientText speed={8} colorFrom="#1e3a8a" colorTo="#93c5fd" className="block">
+                Turning Ideas
+              </AnimatedGradientText>
+              <AnimatedGradientText speed={8} colorFrom="#1e3a8a" colorTo="#93c5fd" className="block">
+                Into Possibilities.
+              </AnimatedGradientText>
             </h1>
 
             {/* Supporting Text */}
@@ -86,7 +86,7 @@ export default function Hero() {
             <div className="absolute inset-0 bg-[radial-gradient(#2563eb_1.5px,transparent_1.5px)] [background-size:24px_24px] opacity-15"></div>
             
             {/* Startup Pipeline Visual Stack */}
-            <div className="relative w-full max-w-[360px] flex flex-col space-y-4 py-8 relative z-10">
+            <div className="relative w-full max-w-[360px] flex flex-col space-y-4 py-8 z-10">
               {[
                 { label: 'IDEA', desc: 'Explore and validate possibilities', color: 'bg-brand-blue-50 border-brand-blue-100 text-brand-blue-600', icon: <Compass className="w-4 h-4" /> },
                 { label: 'BUILD', desc: 'Craft meaningful digital experiences', color: 'bg-indigo-50 border-indigo-100 text-indigo-600', icon: <Sparkles className="w-4 h-4" /> },
