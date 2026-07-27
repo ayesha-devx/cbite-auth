@@ -4,92 +4,66 @@
 
 # CBite
 
-### Full-Stack Authentication & Digital Platform
+### **Full-Stack Authentication & Startup Platform**
 
-**Secure authentication with Email OTP, Google OAuth & GitHub OAuth**
+*Secure identity integration featuring Email OTP, Google OAuth 2.0 & GitHub OAuth*
 
-> **"C the Idea, Bite the Market."**
+---
 
-<br/>
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=white)](#)
+[![Node.js](https://img.shields.io/badge/Node.js-Backend-339933?style=flat-square&logo=node.js&logoColor=white)](#)
+[![Express.js](https://img.shields.io/badge/Express.js-API-000000?style=flat-square&logo=express&logoColor=white)](#)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Database-47A248?style=flat-square&logo=mongodb&logoColor=white)](#)
 
-![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-Backend-339933?style=for-the-badge&logo=node.js&logoColor=white)
-![Express.js](https://img.shields.io/badge/Express.js-API-000000?style=for-the-badge&logo=express&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-Database-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
-
-![Google OAuth](https://img.shields.io/badge/Google-OAuth_2.0-4285F4?style=flat-square&logo=google&logoColor=white)
-![GitHub OAuth](https://img.shields.io/badge/GitHub-OAuth-181717?style=flat-square&logo=github&logoColor=white)
-![JWT](https://img.shields.io/badge/JWT-Authentication-000000?style=flat-square&logo=jsonwebtokens)
-![Nodemailer](https://img.shields.io/badge/Nodemailer-Email_OTP-0F9D58?style=flat-square)
+[![Google OAuth](https://img.shields.io/badge/Google-OAuth_2.0-4285F4?style=flat-square&logo=google&logoColor=white)](#)
+[![GitHub OAuth](https://img.shields.io/badge/GitHub-OAuth-181717?style=flat-square&logo=github&logoColor=white)](#)
+[![JWT](https://img.shields.io/badge/JWT-Authentication-000000?style=flat-square&logo=jsonwebtokens)](#)
+[![Nodemailer](https://img.shields.io/badge/Nodemailer-Email_OTP-0F9D58?style=flat-square)](#)
 
 </div>
 
 ---
 
-## About CBite
+## 📌 Project Overview
 
-CBite is a full-stack web application combining a modern startup landing page with a complete authentication system.
+**CBite** is a full-stack technology platform that transforms digital concepts into market-ready opportunities. The platform integrates a modern, responsive startup landing page with a complete authentication system.
 
-The application provides multiple ways for users to securely access their account through:
-- Email OTP Authentication
-- Google OAuth 2.0
-- GitHub OAuth
-- HTTP-Only Cookie Sessions
-
-The backend is built using a structured Node.js + Express.js architecture, with MongoDB for persistent user data and Passport.js for OAuth authentication.
+Built using a modular **Node.js + Express.js architecture**, CBite implements persistent data modeling via MongoDB Atlas, session restoration via HTTP-Only JWT tokens, and OAuth credentials mapping via Passport.js.
 
 ---
 
-## Key Features
+## ⚡ Key Features
 
-### Authentication and Session Management
-- 6-digit Email OTP authentication
-- OTP expiration and one-time verification
-- Google OAuth 2.0 and GitHub OAuth integration
-- Multiple authentication provider linking (email, Google, and GitHub linked to a single account)
-- HTTP-only authentication cookies for session tracking
-- Persistent authentication across browser refreshes
-- Secure logout mechanism with cookie termination
-- Authenticated user profile and session restoration
-- Protected authentication endpoints
+### 🔐 Authentication & Session Security
+- **Email OTP**: 6-digit cryptographically generated one-time verification codes sent directly to user inboxes.
+- **Expiry Rules**: OTP tokens automatically expire after 5 minutes (enforced via Mongoose TTL indexes).
+- **OAuth Integrations**: Seamless sign-in redirects for Google OAuth 2.0 and GitHub OAuth.
+- **Account Linking**: Dynamic provider binding (email, Google, GitHub) matching identical email profiles to prevent account duplicates.
+- **Secure Sessions**: Signed JSON Web Tokens (JWT) stored in HTTP-Only, SameSite cookies to protect against XSS and CSRF attacks.
+- **Instant UI Updates**: Lifted React states ensure navigational links ("Sign In" ➔ "Account") and left/right UI containers transition immediately upon logging in or out without browser refreshes.
 
-### Backend and Database
-- RESTful API architecture
-- Clean Controller-Service-Model separation
-- MongoDB Atlas integration with Mongoose data modelling
-- Passport.js OAuth strategies
-- JWT-based authentication
-- Custom OTP request rate limiting middleware
-- Centralized Express error handling
-- Environment-based configuration
-- Secure email delivery using Nodemailer (Gmail SMTP)
-
-### Frontend and Interface
-- React + Vite client container
-- Responsive startup landing page with dynamic UI transitions
-- Dynamic login and account state rendering
-- Sign-In status check upon landing page loading
-- Responsive navigation links and authenticated profile views
+### ⚙️ Backend Architecture
+- **Layered Flow**: Clean division of concerns following the `Router` ➔ `Middleware` ➔ `Controller` ➔ `Service` ➔ `Model` design pattern.
+- **Custom Rate Limiting**: Strict middleware restricting OTP requests to 1 request per minute per IP/email address to prevent spam.
+- **Global Error Handling**: Centralized catch-all Express middleware mapping normalized exception payloads.
+- **Secure SMTP Dispatches**: Sanitized console logging routines protecting Gmail App Passwords and cryptographic keys from printing in log files.
 
 ---
 
-## Tech Stack
+## 🛠️ Technology Stack
 
-| Layer | Technologies |
-|---|---|
-| **Frontend** | React, Vite, Tailwind CSS, Lucide React |
-| **Backend** | Node.js, Express.js |
-| **Database** | MongoDB Atlas, Mongoose |
-| **Authentication** | JWT, Passport.js, Google OAuth, GitHub OAuth |
-| **Email** | Nodemailer, Gmail SMTP |
-| **Security** | Helmet, CORS, Rate Limiting, HTTP-Only Cookies |
-| **Development** | Git, GitHub, Nodemon |
+| Component | Technologies |
+| :--- | :--- |
+| **Frontend** | React 19, Vite, Tailwind CSS, Lucide React Icons |
+| **Backend** | Node.js, Express.js (ES Modules) |
+| **Database** | MongoDB Atlas, Mongoose ODM |
+| **Authentication** | JSON Web Tokens, Passport.js |
+| **Email Services** | Nodemailer, Gmail SMTP Server |
+| **Security Suite** | Helmet Headers, CORS Whitelisting, HTTP-Only Cookie Parsers |
 
 ---
 
-# Backend Architecture
-
-The backend follows a layered architecture to separate HTTP handling, authentication logic, business logic, and database operations.
+# 🏗️ Backend System Flow
 
 ```text
                   CLIENT
@@ -119,451 +93,146 @@ The backend follows a layered architecture to separate HTTP handling, authentica
        MongoDB    Email SMTP   OAuth
 ```
 
-### Request Lifecycle
+### Request Pipeline
 
 ```text
-Request
-   ↓
-Route
-   ↓
-Middleware
-   ↓
-Controller
-   ↓
-Service
-   ↓
-Model / External Provider
-   ↓
-Response
+HTTP Request ➔ Route Definition ➔ Middleware (Rate Limiter/Auth) ➔ Controller Handler ➔ Service Logic ➔ DB / Provider ➔ Response
 ```
 
 ---
 
-# Project Structure
+# 📂 Project Structure
 
 ```text
 cbite-auth/
 │
 ├── backend/
-│   │
 │   ├── src/
-│   │   ├── config/
+│   │   ├── config/               # Database and strategy configurations
 │   │   │   ├── db.js
 │   │   │   ├── googlePassport.js
 │   │   │   └── githubPassport.js
 │   │   │
-│   │   ├── controllers/
+│   │   ├── controllers/          # HTTP request controllers
 │   │   │   ├── auth.controller.js
 │   │   │   └── otp.controller.js
 │   │   │
-│   │   ├── middleware/
+│   │   ├── middleware/           # Express middleware
 │   │   │   ├── auth.middleware.js
 │   │   │   ├── error.middleware.js
 │   │   │   └── rateLimiter.middleware.js
 │   │   │
-│   │   ├── models/
+│   │   ├── models/               # Mongoose database schemas
 │   │   │   ├── User.js
 │   │   │   └── Otp.js
 │   │   │
-│   │   ├── routes/
+│   │   ├── routes/               # API route definitions
 │   │   │   ├── auth.routes.js
 │   │   │   └── index.js
 │   │   │
-│   │   ├── services/
+│   │   ├── services/             # Business logic layer
 │   │   │   ├── email.service.js
 │   │   │   ├── jwt.service.js
 │   │   │   └── otp.service.js
 │   │   │
-│   │   ├── utils/
+│   │   ├── utils/                # General helpers
 │   │   │   └── asyncHandler.js
 │   │   │
-│   │   ├── app.js
-│   │   └── server.js
+│   │   ├── app.js                # Express app initialization
+│   │   └── server.js             # Server startup bootstrap
 │   │
 │   ├── .env.example
 │   ├── .gitignore
 │   └── package.json
 │
-├── frontend/
-│   │
-│   ├── public/
-│   ├── src/
-│   │   ├── assets/
-│   │   ├── components/
-│   │   ├── App.jsx
-│   │   ├── main.jsx
-│   │   └── index.css
-│   │
-│   ├── package.json
-│   └── vite.config.js
-│
-├── .gitignore
-└── README.md
+└── frontend/
+    ├── public/
+    ├── src/
+    │   ├── assets/
+    │   ├── components/
+    │   ├── App.jsx
+    │   ├── main.jsx
+    │   └── index.css
+    │
+    ├── package.json
+    └── vite.config.js
 ```
 
 ---
 
-# Authentication Flow
+# 🌐 API Reference
 
-## Email OTP
+### Authentication Endpoints
 
-```text
-User enters email
-        │
-        ▼
-POST /api/auth/otp/send
-        │
-        ▼
-Generate 6-digit OTP
-        │
-        ▼
-Store OTP + Expiration
-        │
-        ▼
-Send OTP via Gmail SMTP
-        │
-        ▼
-User enters OTP
-        │
-        ▼
-POST /api/auth/otp/verify
-        │
-        ▼
-Validate OTP
-        │
-        ▼
-Create / Update User
-        │
-        ▼
-Generate JWT
-        │
-        ▼
-HTTP-Only Cookie
-        │
-        ▼
-   AUTHENTICATED
-```
+| Method | Endpoint | Access | Description |
+| :---: | :--- | :--- | :--- |
+| `POST` | `/api/auth/otp/send` | Public | Generates and sends a 6-digit verification code. |
+| `POST` | `/api/auth/otp/verify` | Public | Validates code and establishes HTTP-Only JWT session. |
+| `GET` | `/api/auth/google` | Public | Initiates Google OAuth consent flow. |
+| `GET` | `/api/auth/google/callback` | Public | Handles Google authentication callback. |
+| `GET` | `/api/auth/github` | Public | Initiates GitHub OAuth consent flow (writes CSRF cookie). |
+| `GET` | `/api/auth/github/callback` | Public | Handles GitHub callback and links user. |
+| `GET` | `/api/auth/me` | Private | Retrieves active user session using cookies. |
+| `POST` | `/api/auth/logout` | Private | Clears the session cookie. |
+
+### System Check
+
+| Method | Endpoint | Access | Description |
+| :---: | :--- | :--- | :--- |
+| `GET` | `/api/health` | Public | Returns database connection and environment status. |
 
 ---
 
-## Google OAuth
+# 🛡️ Security Features
 
-```text
-Continue with Google
-        ↓
-GET /api/auth/google
-        ↓
-Google Authorization
-        ↓
-Google OAuth Callback
-        ↓
-Passport Strategy
-        ↓
-Find / Create / Link User
-        ↓
-Generate JWT
-        ↓
-Set HTTP-Only Cookie
-        ↓
-Redirect to CBite
-        ↓
-Authenticated
-```
+> [!IMPORTANT]
+> - **HttpOnly Cookies**: Prevents client-side scripts from reading the JWT cookie, mitigating XSS risks.
+> - **CSRF State Stores**: Employs a custom Passport store utilizing cryptographical `oauth_state` cookies to validate authorization requests statelessly.
+> - **Central Error Handling**: Ensures backend exception logs never print sensitive database credentials or parameters back to the client.
+> - **Environment Exclusions**: Crucial project parameters are locked in local `.env` keys. Template defaults reside in `.env.example`.
 
 ---
 
-## GitHub OAuth
+# 🗄️ Database Schemas
 
-```text
-Continue with GitHub
-        ↓
-GET /api/auth/github
-        ↓
-GitHub Authorization
-        ↓
-GitHub OAuth Callback
-        ↓
-Passport Strategy
-        ↓
-Find / Create / Link User
-        ↓
-Generate JWT
-        ↓
-Set HTTP-Only Cookie
-        ↓
-Redirect to CBite
-        ↓
-Authenticated
-```
-
----
-
-# Account Linking
-
-CBite uses a unified user model for different authentication methods.
-
-```text
-                 ┌─────────────┐
-                 │    USER     │
-                 └──────┬──────┘
-                        │
-             ┌──────────┼──────────┐
-             ▼          ▼          ▼
-           Email      Google     GitHub
-```
-
-This allows authentication providers to be associated with an existing account when emails match, instead of creating duplicate accounts.
-
----
-
-# API Endpoints
-
-### Authentication
-
-| Method | Endpoint | Description |
-|:---:|---|---|
-| `POST` | `/api/auth/otp/send` | Send Email OTP |
-| `POST` | `/api/auth/otp/verify` | Verify OTP & authenticate |
-| `GET` | `/api/auth/google` | Start Google OAuth |
-| `GET` | `/api/auth/google/callback` | Google OAuth callback |
-| `GET` | `/api/auth/github` | Start GitHub OAuth |
-| `GET` | `/api/auth/github/callback` | GitHub OAuth callback |
-| `GET` | `/api/auth/me` | Get authenticated user |
-| `POST` | `/api/auth/logout` | Logout current user |
-
-### System
-
-| Method | Endpoint | Description |
-|:---:|---|---|
-| `GET` | `/api/health` | API & database health check |
-
----
-
-# Session Management
-
-Authentication tokens are not stored in frontend `localStorage` or `sessionStorage`.
-
-After successful authentication:
-
-```text
-Authentication Successful
-          ↓
-JWT Generated
-          ↓
-HTTP-Only Cookie
-          ↓
-Browser stores cookie
-          ↓
-GET /api/auth/me
-          ↓
-Backend validates session
-          ↓
-Frontend receives user
-          ↓
-Account UI displayed
-```
-
----
-
-# Security
-
-The backend implements multiple security measures:
-
-| Security Measure | Purpose |
-|---|---|
-| **HTTP-Only Cookies** | Prevent direct JavaScript access to authentication token |
-| **OTP Expiration** | Prevent old verification codes from being reused |
-| **One-Time OTP** | Verification codes cannot be reused after validation |
-| **Rate Limiting** | Restricts repeated OTP requests |
-| **OAuth State Protection** | Helps protect OAuth flow against login CSRF |
-| **Helmet** | Adds secure HTTP response headers |
-| **CORS** | Restricts allowed frontend origins |
-| **Environment Variables** | Keeps credentials outside source code |
-| **Central Error Handler** | Provides consistent backend error responses |
-
-> The real `.env` file is excluded from Git and must never be committed.
-
----
-
-# Database
-
-MongoDB stores user profiles and OTP-related authentication data.
-
-### User Schema Model
-
+### User Model
 ```text
 User
-│
-├── name
-├── email
-├── googleId
-├── githubId
-├── githubUsername
-├── authProviders[]
-├── isVerified
-├── lastLoginAt
-├── createdAt
-└── updatedAt
-```
-
-### Authentication Providers
-```text
-authProviders: ["email", "google", "github"]
+├── name (String, optional)
+├── email (String, unique, lowercase, sparse)
+├── googleId (String, unique, sparse)
+├── githubId (String, unique, sparse)
+├── githubUsername (String, optional)
+├── authProviders (Array, default: [])
+├── isVerified (Boolean, default: false)
+├── lastLoginAt (Date)
+└── timestamps (createdAt, updatedAt)
 ```
 
 ---
 
-# Error Handling
+# ⚙️ Local Development
 
-The backend uses centralized Express error handling.
-
-Asynchronous controllers use a reusable `asyncHandler` utility so rejected promises can automatically reach the global error middleware.
-
-Example error response:
-
-```json
-{
-  "success": false,
-  "message": "Authentication required."
-}
-```
-
-This keeps API error responses consistent and avoids repetitive controller-level error handling.
-
----
-
-# Environment Setup
-
-Create a local:
-
-```text
-backend/.env
-```
-
-Use `.env.example` as the template.
-
-```env
-PORT=5000
-
-MONGODB_URI=your_mongodb_connection_string
-
-JWT_SECRET=your_secure_jwt_secret
-
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USER=your_email@gmail.com
-SMTP_PASS=your_google_app_password
-SMTP_FROM_EMAIL=your_email@gmail.com
-
-GOOGLE_CLIENT_ID=your_google_client_id
-GOOGLE_CLIENT_SECRET=your_google_client_secret
-GOOGLE_CALLBACK_URL=http://localhost:5000/api/auth/google/callback
-
-GITHUB_CLIENT_ID=your_github_client_id
-GITHUB_CLIENT_SECRET=your_github_client_secret
-GITHUB_CALLBACK_URL=http://localhost:5000/api/auth/github/callback
-
-FRONTEND_URL=http://localhost:5173
-```
-
-> Use placeholder values in `.env.example`. Never push real credentials to GitHub.
-
----
-
-# Run Locally
-
-## 1. Clone
-
+### 1. Repository Setup
 ```bash
 git clone <repository-url>
 cd cbite-auth
 ```
 
-## 2. Start Backend
-
+### 2. Startup Backend
 ```bash
 cd backend
 npm install
-```
-
-Create and configure:
-```text
-backend/.env
-```
-
-Then:
-```bash
+cp .env.example .env # Update MONGODB_URI and OAuth details
 npm run dev
 ```
 
-Backend:
-```text
-http://localhost:5000
-```
-
-## 3. Start Frontend
-
-Open another terminal:
-
+### 3. Startup Frontend
 ```bash
-cd frontend
+cd ../frontend
 npm install
 npm run dev
 ```
-
-Frontend:
-```text
-http://localhost:5173
-```
-
----
-
-# Testing the Authentication
-
-Once both servers are running:
-
-### Email OTP
-```text
-Enter Email
-→ Send Verification Code
-→ Check Email
-→ Enter OTP
-→ Verify
-→ Account Created / Logged In
-```
-
-### Google
-```text
-Continue with Google
-→ Select Google Account
-→ Authorize
-→ Redirect to CBite
-→ Logged In
-```
-
-### GitHub
-```text
-Continue with GitHub
-→ Authorize CBite
-→ Redirect to CBite
-→ Logged In
-```
-
-### Logout
-```text
-Account
-→ Log Out Session
-→ Cookie Cleared
-→ Login UI Restored
-```
-
----
-
-# Key Concepts Demonstrated
-
-This project demonstrates practical backend development concepts including:
-
-`REST APIs` • `Authentication` • `OAuth 2.0` • `JWT` • `Email OTP` • `MongoDB` • `Mongoose` • `Middleware` • `Rate Limiting` • `Cookies` • `Error Handling` • `Service Layer Architecture` • `Frontend-Backend Integration`
 
 ---
 
@@ -571,9 +240,8 @@ This project demonstrates practical backend development concepts including:
 
 ## Author
 
-**Ayesha Topiwala**
-
-Computer Engineering Student • Full-Stack Web Developer
+**Ayesha Topiwala**  
+*Computer Engineering Student • Full-Stack Web Developer*
 
 <br/>
 
