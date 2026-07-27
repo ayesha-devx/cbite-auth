@@ -17,10 +17,10 @@
 ![Express.js](https://img.shields.io/badge/Express.js-API-000000?style=for-the-badge&logo=express&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Database-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
 
-![Google OAuth](https://img.shields.io/badge/Google-OAuth-4285F4?style=flat-square&logo=google&logoColor=white)
-![GitHub OAuth](https://img.shields.io/badge/GitHub-OAuth-181717?style=flat-square&logo=github&logoColor=white)
-![JWT](https://img.shields.io/badge/JWT-Authentication-000000?style=flat-square&logo=jsonwebtokens)
-![Nodemailer](https://img.shields.io/badge/Nodemailer-Email_OTP-0F9D58?style=flat-square)
+![Google OAuth](https://img.shields.io/badge/Google-OAuth-4285F4?style=for-the-badge&logo=google&logoColor=white)
+![GitHub OAuth](https://img.shields.io/badge/GitHub-OAuth-181717?style=for-the-badge&logo=github&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-Authentication-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
+![Nodemailer](https://img.shields.io/badge/Nodemailer-Email_OTP-0F9D58?style=for-the-badge)
 
 </div>
 
@@ -76,14 +76,14 @@ The backend is built using a structured Node.js + Express.js architecture, with 
 ## Tech Stack
 
 | Layer | Technologies |
-|---|---|
-| **Frontend** | React, Vite, Tailwind CSS, Lucide React |
-| **Backend** | Node.js, Express.js |
-| **Database** | MongoDB Atlas, Mongoose |
-| **Authentication** | JWT, Passport.js, Google OAuth, GitHub OAuth |
-| **Email** | Nodemailer, Gmail SMTP |
-| **Security** | Helmet, CORS, Rate Limiting, HTTP-Only Cookies |
-| **Development** | Git, GitHub, Nodemon |
+| :--- | :--- |
+| **Frontend** | `React`, `Vite`, `Tailwind CSS`, `Lucide React` |
+| **Backend** | `Node.js`, `Express.js` |
+| **Database** | `MongoDB Atlas`, `Mongoose` |
+| **Authentication** | `JWT`, `Passport.js`, `Google OAuth`, `GitHub OAuth` |
+| **Email** | `Nodemailer`, `Gmail SMTP` |
+| **Security** | `Helmet`, `CORS`, `Rate Limiting`, `HTTP-Only Cookies` |
+| **Development** | `Git`, `GitHub`, `Nodemon` |
 
 ---
 
@@ -321,7 +321,7 @@ This allows authentication providers to be associated with an existing account w
 ### Authentication
 
 | Method | Endpoint | Description |
-|:---:|---|---|
+| :---: | :--- | :--- |
 | `POST` | `/api/auth/otp/send` | Send Email OTP |
 | `POST` | `/api/auth/otp/verify` | Verify OTP & authenticate |
 | `GET` | `/api/auth/google` | Start Google OAuth |
@@ -334,7 +334,7 @@ This allows authentication providers to be associated with an existing account w
 ### System
 
 | Method | Endpoint | Description |
-|:---:|---|---|
+| :---: | :--- | :--- |
 | `GET` | `/api/health` | API & database health check |
 
 ---
@@ -370,7 +370,7 @@ Account UI displayed
 The backend implements multiple security measures:
 
 | Security Measure | Purpose |
-|---|---|
+| :--- | :--- |
 | **HTTP-Only Cookies** | Prevent direct JavaScript access to authentication token |
 | **OTP Expiration** | Prevent old verification codes from being reused |
 | **One-Time OTP** | Verification codes cannot be reused after validation |
