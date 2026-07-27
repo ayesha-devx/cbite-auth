@@ -1,6 +1,4 @@
-<div align="center">
-
-# 🚀 CBite
+# CBite
 
 ### Full-Stack Authentication & Digital Platform
 
@@ -20,84 +18,72 @@
 ![JWT](https://img.shields.io/badge/JWT-Authentication-000000?style=flat-square&logo=jsonwebtokens)
 ![Nodemailer](https://img.shields.io/badge/Nodemailer-Email_OTP-0F9D58?style=flat-square)
 
-</div>
-
 ---
 
-## 📌 About CBite
+## About CBite
 
-**CBite** is a full-stack web application combining a modern startup landing page with a complete authentication system.
+CBite is a full-stack web application combining a modern startup landing page with a complete authentication system.
 
 The application provides multiple ways for users to securely access their account through:
+- Email OTP Authentication
+- Google OAuth 2.0
+- GitHub OAuth
+- HTTP-Only Cookie Sessions
 
-- 📧 **Email OTP Authentication**
-- 🔵 **Google OAuth 2.0**
-- ⚫ **GitHub OAuth**
-- 🍪 **HTTP-Only Cookie Sessions**
-
-The backend is built using a structured **Node.js + Express.js architecture**, with MongoDB for persistent user data and Passport.js for OAuth authentication.
+The backend is built using a structured Node.js + Express.js architecture, with MongoDB for persistent user data and Passport.js for OAuth authentication.
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-### 🔐 Authentication
+### Authentication and Session Management
+- 6-digit Email OTP authentication
+- OTP expiration and one-time verification
+- Google OAuth 2.0 and GitHub OAuth integration
+- Multiple authentication provider linking (email, Google, and GitHub linked to a single account)
+- HTTP-only authentication cookies for session tracking
+- Persistent authentication across browser refreshes
+- Secure logout mechanism with cookie termination
+- Authenticated user profile and session restoration
+- Protected authentication endpoints
 
-- 📧 6-digit Email OTP authentication
-- ⏱️ OTP expiration and one-time verification
-- 🔵 Google OAuth 2.0
-- ⚫ GitHub OAuth
-- 🔗 Multiple authentication provider linking
-- 🍪 HTTP-only authentication cookies
-- 🔄 Persistent authentication after refresh
-- 🚪 Secure logout
-- 👤 Authenticated user profile
-- 🛡️ Protected authentication endpoints
-
-### ⚙️ Backend
-
+### Backend and Database
 - RESTful API architecture
-- Controller → Service → Model separation
-- MongoDB Atlas integration
-- Mongoose data modelling
+- Clean Controller-Service-Model separation
+- MongoDB Atlas integration with Mongoose data modelling
 - Passport.js OAuth strategies
 - JWT-based authentication
-- Authentication middleware
-- OTP request rate limiting
-- Centralized error handling
+- Custom OTP request rate limiting middleware
+- Centralized Express error handling
 - Environment-based configuration
-- Secure email delivery using Nodemailer
+- Secure email delivery using Nodemailer (Gmail SMTP)
 
-### 🎨 Frontend
-
-- React + Vite
-- Responsive startup landing page
-- Dynamic login/account states
-- Google & GitHub login integration
-- Email OTP verification interface
-- Session restoration
-- Responsive navigation
-- Authenticated profile interface
+### Frontend and Interface
+- React + Vite client container
+- Responsive startup landing page with dynamic UI transitions
+- Dynamic login and account state rendering
+- Sign-In status check upon landing page loading
+- Responsive navigation links and authenticated profile views
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technologies |
 |---|---|
-| 🎨 **Frontend** | React, Vite, Tailwind CSS, Lucide React |
-| ⚙️ **Backend** | Node.js, Express.js |
-| 🗄️ **Database** | MongoDB Atlas, Mongoose |
-| 🔐 **Authentication** | JWT, Passport.js, Google OAuth, GitHub OAuth |
-| 📧 **Email** | Nodemailer, Gmail SMTP |
-| 🛡️ **Security** | Helmet, CORS, Rate Limiting, HTTP-Only Cookies |
-| 🧰 **Development** | Git, GitHub, Nodemon |
+| **Frontend** | React, Vite, Tailwind CSS, Lucide React |
+| **Backend** | Node.js, Express.js |
+| **Database** | MongoDB Atlas, Mongoose |
+| **Authentication** | JWT, Passport.js, Google OAuth, GitHub OAuth |
+| **Email** | Nodemailer, Gmail SMTP |
+| **Security** | Helmet, CORS, Rate Limiting, HTTP-Only Cookies |
+| **Development** | Git, GitHub, Nodemon |
 
 ---
 
-# 🏗️ Backend Architecture
+# Backend Architecture
 
-The backend follows a layered architecture to separate HTTP handling, authentication logic, business logic and database operations.
+The backend follows a layered architecture to separate HTTP handling, authentication logic, business logic, and database operations.
 
 ```text
                   CLIENT
@@ -145,11 +131,9 @@ Model / External Provider
 Response
 ```
 
-This keeps individual backend responsibilities separated and makes the application easier to maintain and extend.
-
 ---
 
-# 📂 Project Structure
+# Project Structure
 
 ```text
 cbite-auth/
@@ -213,9 +197,9 @@ cbite-auth/
 
 ---
 
-# 🔐 Authentication Flow
+# Authentication Flow
 
-## 📧 Email OTP
+## Email OTP
 
 ```text
 User enters email
@@ -251,14 +235,12 @@ Generate JWT
 HTTP-Only Cookie
         │
         ▼
-   AUTHENTICATED ✅
+   AUTHENTICATED
 ```
-
-The OTP is time-limited and designed for one-time use.
 
 ---
 
-## 🔵 Google OAuth
+## Google OAuth
 
 ```text
 Continue with Google
@@ -279,12 +261,12 @@ Set HTTP-Only Cookie
         ↓
 Redirect to CBite
         ↓
-Authenticated ✅
+Authenticated
 ```
 
 ---
 
-## ⚫ GitHub OAuth
+## GitHub OAuth
 
 ```text
 Continue with GitHub
@@ -305,16 +287,14 @@ Set HTTP-Only Cookie
         ↓
 Redirect to CBite
         ↓
-Authenticated ✅
+Authenticated
 ```
 
 ---
 
-# 🔗 Account Linking
+# Account Linking
 
 CBite uses a unified user model for different authentication methods.
-
-A user can authenticate through:
 
 ```text
                  ┌─────────────┐
@@ -323,14 +303,14 @@ A user can authenticate through:
                         │
              ┌──────────┼──────────┐
              ▼          ▼          ▼
-          📧 Email   🔵 Google   ⚫ GitHub
+           Email      Google     GitHub
 ```
 
-This allows authentication providers to be associated with an existing account when applicable instead of unnecessarily creating duplicate users.
+This allows authentication providers to be associated with an existing account when emails match, instead of creating duplicate accounts.
 
 ---
 
-# 🌐 API Endpoints
+# API Endpoints
 
 ### Authentication
 
@@ -353,7 +333,7 @@ This allows authentication providers to be associated with an existing account w
 
 ---
 
-# 🍪 Session Management
+# Session Management
 
 Authentication tokens are not stored in frontend `localStorage` or `sessionStorage`.
 
@@ -377,37 +357,33 @@ Frontend receives user
 Account UI displayed
 ```
 
-This also allows the application to restore the authenticated user after a browser refresh.
-
 ---
 
-# 🛡️ Security
+# Security
 
 The backend implements multiple security measures:
 
 | Security Measure | Purpose |
 |---|---|
-| 🍪 **HTTP-Only Cookies** | Prevent direct JavaScript access to authentication token |
-| ⏱️ **OTP Expiration** | Prevent old verification codes from being reused |
-| 🔂 **One-Time OTP** | Verification codes cannot be reused after validation |
-| 🚦 **Rate Limiting** | Restricts repeated OTP requests |
-| 🔐 **OAuth State Protection** | Helps protect OAuth flow against login CSRF |
-| 🪖 **Helmet** | Adds secure HTTP response headers |
-| 🌐 **CORS** | Restricts allowed frontend origins |
-| 🔑 **Environment Variables** | Keeps credentials outside source code |
-| ⚠️ **Central Error Handler** | Provides consistent backend error responses |
+| **HTTP-Only Cookies** | Prevent direct JavaScript access to authentication token |
+| **OTP Expiration** | Prevent old verification codes from being reused |
+| **One-Time OTP** | Verification codes cannot be reused after validation |
+| **Rate Limiting** | Restricts repeated OTP requests |
+| **OAuth State Protection** | Helps protect OAuth flow against login CSRF |
+| **Helmet** | Adds secure HTTP response headers |
+| **CORS** | Restricts allowed frontend origins |
+| **Environment Variables** | Keeps credentials outside source code |
+| **Central Error Handler** | Provides consistent backend error responses |
 
-> 🔒 The real `.env` file is excluded from Git and must never be committed.
+> The real `.env` file is excluded from Git and must never be committed.
 
 ---
 
-# 🗄️ Database
+# Database
 
 MongoDB stores user profiles and OTP-related authentication data.
 
-### User
-
-A user may contain information such as:
+### User Schema Model
 
 ```text
 User
@@ -425,19 +401,13 @@ User
 ```
 
 ### Authentication Providers
-
 ```text
-authProviders:
-[
-  "email",
-  "google",
-  "github"
-]
+authProviders: ["email", "google", "github"]
 ```
 
 ---
 
-# ⚠️ Error Handling
+# Error Handling
 
 The backend uses centralized Express error handling.
 
@@ -456,7 +426,7 @@ This keeps API error responses consistent and avoids repetitive controller-level
 
 ---
 
-# ⚙️ Environment Setup
+# Environment Setup
 
 Create a local:
 
@@ -490,20 +460,20 @@ GITHUB_CALLBACK_URL=http://localhost:5000/api/auth/github/callback
 FRONTEND_URL=http://localhost:5173
 ```
 
-> ⚠️ Use placeholder values in `.env.example`. Never push real credentials to GitHub.
+> Use placeholder values in `.env.example`. Never push real credentials to GitHub.
 
 ---
 
-# 🚀 Run Locally
+# Run Locally
 
-## 1️⃣ Clone
+## 1. Clone
 
 ```bash
 git clone <repository-url>
 cd cbite-auth
 ```
 
-## 2️⃣ Start Backend
+## 2. Start Backend
 
 ```bash
 cd backend
@@ -511,24 +481,21 @@ npm install
 ```
 
 Create and configure:
-
 ```text
 backend/.env
 ```
 
 Then:
-
 ```bash
 npm run dev
 ```
 
 Backend:
-
 ```text
 http://localhost:5000
 ```
 
-## 3️⃣ Start Frontend
+## 3. Start Frontend
 
 Open another terminal:
 
@@ -539,19 +506,17 @@ npm run dev
 ```
 
 Frontend:
-
 ```text
 http://localhost:5173
 ```
 
 ---
 
-# 🧪 Testing the Authentication
+# Testing the Authentication
 
 Once both servers are running:
 
 ### Email OTP
-
 ```text
 Enter Email
 → Send Verification Code
@@ -562,7 +527,6 @@ Enter Email
 ```
 
 ### Google
-
 ```text
 Continue with Google
 → Select Google Account
@@ -572,7 +536,6 @@ Continue with Google
 ```
 
 ### GitHub
-
 ```text
 Continue with GitHub
 → Authorize CBite
@@ -581,7 +544,6 @@ Continue with GitHub
 ```
 
 ### Logout
-
 ```text
 Account
 → Log Out Session
@@ -591,7 +553,7 @@ Account
 
 ---
 
-# 💡 What This Project Demonstrates
+# Key Concepts Demonstrated
 
 This project demonstrates practical backend development concepts including:
 
@@ -601,7 +563,7 @@ This project demonstrates practical backend development concepts including:
 
 <div align="center">
 
-## 👩‍💻 Author
+## Author
 
 **Ayesha Topiwala**
 
@@ -610,7 +572,6 @@ Computer Engineering Student • Full-Stack Web Developer
 <br/>
 
 ### CBite
-
 **"C the Idea, Bite the Market."**
 
 </div>
