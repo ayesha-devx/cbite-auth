@@ -4,21 +4,23 @@
 
 # CBite
 
-### **Full-Stack Authentication & Startup Platform**
+### Full-Stack Authentication & Digital Platform
 
-*Secure identity integration featuring Email OTP, Google OAuth & GitHub OAuth*
+**Secure authentication with Email OTP, Google OAuth & GitHub OAuth**
 
----
+> **"C the Idea, Bite the Market."**
 
-[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=white)](#)
-[![Node.js](https://img.shields.io/badge/Node.js-Backend-339933?style=for-the-badge&logo=node.js&logoColor=white)](#)
-[![Express.js](https://img.shields.io/badge/Express.js-API-000000?style=for-the-badge&logo=express&logoColor=white)](#)
-[![MongoDB](https://img.shields.io/badge/MongoDB-Database-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](#)
+<br/>
 
-[![Google OAuth](https://img.shields.io/badge/Google-OAuth-4285F4?style=for-the-badge&logo=google&logoColor=white)](#)
-[![GitHub OAuth](https://img.shields.io/badge/GitHub-OAuth-181717?style=for-the-badge&logo=github&logoColor=white)](#)
-[![JWT](https://img.shields.io/badge/JWT-Authentication-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)](#)
-[![Nodemailer](https://img.shields.io/badge/Nodemailer-Email_OTP-0F9D58?style=for-the-badge)](#)
+![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-Backend-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-API-000000?style=for-the-badge&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+
+![Google OAuth](https://img.shields.io/badge/Google-OAuth-4285F4?style=for-the-badge&logo=google&logoColor=white)
+![GitHub OAuth](https://img.shields.io/badge/GitHub-OAuth-181717?style=for-the-badge&logo=github&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-Authentication-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
+![Nodemailer](https://img.shields.io/badge/Nodemailer-Email_OTP-0F9D58?style=for-the-badge)
 
 </div>
 
@@ -41,15 +43,33 @@ The backend is built using a structured Node.js + Express.js architecture, with 
 ## Key Features
 
 ### Authentication and Session Management
-- **One-Time Email OTP**: 6-digit verification codes sent directly to user inboxes with custom expiration timeouts.
-- **Provider account linking**: Link multiple login methods (Email, Google, GitHub) automatically to a single profile.
-- **Secure cookie sessions**: HTTP-only session cookies store JWT tokens, preventing front-end script read access.
-- **State persistence**: Seamless session restoration and user verification across page refreshes.
+- 6-digit Email OTP authentication
+- OTP expiration and one-time verification
+- Google OAuth and GitHub OAuth integration
+- Multiple authentication provider linking (email, Google, and GitHub linked to a single account)
+- HTTP-only authentication cookies for session tracking
+- Persistent authentication across browser refreshes
+- Secure logout mechanism with cookie termination
+- Authenticated user profile and session restoration
+- Protected authentication endpoints
 
-### Backend Operations
-- **Layered structure**: Router ➔ Middleware ➔ Controller ➔ Service ➔ Model design paradigm.
-- **Rate limiter**: Custom request throttling middleware to limit verification spamming.
-- **Centralized errors**: Consistent error messaging and centralized Express handler.
+### Backend and Database
+- RESTful API architecture
+- Clean Controller-Service-Model separation
+- MongoDB Atlas integration with Mongoose data modelling
+- Passport.js OAuth strategies
+- JWT-based authentication
+- Custom OTP request rate limiting middleware
+- Centralized Express error handling
+- Environment-based configuration
+- Secure email delivery using Nodemailer (Gmail SMTP)
+
+### Frontend and Interface
+- React + Vite client container
+- Responsive startup landing page with dynamic UI transitions
+- Dynamic login and account state rendering
+- Sign-In status check upon landing page loading
+- Responsive navigation links and authenticated profile views
 
 ---
 
@@ -102,16 +122,24 @@ The backend follows a layered architecture to separate HTTP handling, authentica
 ### Request Lifecycle
 
 ```text
-Request ➔ Route ➔ Middleware ➔ Controller ➔ Service ➔ Database/External Provider ➔ Response
+Request
+   ↓
+Route
+   ↓
+Middleware
+   ↓
+Controller
+   ↓
+Service
+   ↓
+Model / External Provider
+   ↓
+Response
 ```
 
 ---
 
 # Project Structure
-
-<details>
-<summary><b>📂 Click to expand project folder hierarchy</b></summary>
-<br>
 
 ```text
 cbite-auth/
@@ -172,15 +200,12 @@ cbite-auth/
 ├── .gitignore
 └── README.md
 ```
-</details>
 
 ---
 
-# Authentication Flows
+# Authentication Flow
 
-<details>
-<summary><b>📧 Click to expand Email OTP flow</b></summary>
-<br>
+## Email OTP
 
 ```text
 User enters email
@@ -218,11 +243,10 @@ HTTP-Only Cookie
         ▼
    AUTHENTICATED
 ```
-</details>
 
-<details>
-<summary><b>🔵 Click to expand Google OAuth flow</b></summary>
-<br>
+---
+
+## Google OAuth
 
 ```text
 Continue with Google
@@ -245,11 +269,10 @@ Redirect to CBite
         ↓
 Authenticated
 ```
-</details>
 
-<details>
-<summary><b>⚫ Click to expand GitHub OAuth flow</b></summary>
-<br>
+---
+
+## GitHub OAuth
 
 ```text
 Continue with GitHub
@@ -272,7 +295,6 @@ Redirect to CBite
         ↓
 Authenticated
 ```
-</details>
 
 ---
 
@@ -309,7 +331,7 @@ This allows authentication providers to be associated with an existing account w
 | `GET` | `/api/auth/me` | Get authenticated user |
 | `POST` | `/api/auth/logout` | Logout current user |
 
-### System Check
+### System
 
 | Method | Endpoint | Description |
 | :---: | :--- | :--- |
@@ -343,7 +365,7 @@ Account UI displayed
 
 ---
 
-# Security Architecture
+# Security
 
 The backend implements multiple security measures:
 
@@ -363,11 +385,9 @@ The backend implements multiple security measures:
 
 ---
 
-# Database Schema
+# Database
 
-<details>
-<summary><b>🗄️ Click to expand User details model</b></summary>
-<br>
+MongoDB stores user profiles and OTP-related authentication data.
 
 ### User Schema Model
 
@@ -390,13 +410,14 @@ User
 ```text
 authProviders: ["email", "google", "github"]
 ```
-</details>
 
 ---
 
 # Error Handling
 
-The backend uses centralized Express error handling. Asynchronous controllers use a reusable `asyncHandler` utility so rejected promises can automatically reach the global error middleware.
+The backend uses centralized Express error handling.
+
+Asynchronous controllers use a reusable `asyncHandler` utility so rejected promises can automatically reach the global error middleware.
 
 Example error response:
 
@@ -407,20 +428,20 @@ Example error response:
 }
 ```
 
+This keeps API error responses consistent and avoids repetitive controller-level error handling.
+
 ---
 
-# Environment Configuration
-
-<details>
-<summary><b>⚙️ Click to expand environment variables template</b></summary>
-<br>
+# Environment Setup
 
 Create a local:
+
 ```text
 backend/.env
 ```
 
-Use `.env.example` as the template:
+Use `.env.example` as the template.
+
 ```env
 PORT=5000
 
@@ -446,39 +467,60 @@ FRONTEND_URL=http://localhost:5173
 ```
 
 > Use placeholder values in `.env.example`. Never push real credentials to GitHub.
-</details>
 
 ---
 
-# Installation & Run Instructions
+# Run Locally
 
-### 1. Repository Setup
+## 1. Clone
+
 ```bash
 git clone <repository-url>
 cd cbite-auth
 ```
 
-### 2. Startup Backend
+## 2. Start Backend
+
 ```bash
 cd backend
+npm install
+```
+
+Create and configure:
+```text
+backend/.env
+```
+
+Then:
+```bash
+npm run dev
+```
+
+Backend:
+```text
+http://localhost:5000
+```
+
+## 3. Start Frontend
+
+Open another terminal:
+
+```bash
+cd frontend
 npm install
 npm run dev
 ```
 
-### 3. Startup Frontend
-```bash
-cd ../frontend
-npm install
-npm run dev
+Frontend:
+```text
+http://localhost:5173
 ```
 
 ---
 
-# Testing instructions
+# Testing the Authentication
 
-<details>
-<summary><b>🧪 Click to expand testing flow checks</b></summary>
-<br>
+Once both servers are running:
 
 ### Email OTP
 ```text
@@ -514,7 +556,6 @@ Account
 → Cookie Cleared
 → Login UI Restored
 ```
-</details>
 
 ---
 
