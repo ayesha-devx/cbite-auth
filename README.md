@@ -4,23 +4,21 @@
 
 # CBite
 
-### Full-Stack Authentication & Digital Platform
+### **Full-Stack Authentication & Startup Platform**
 
-**Secure authentication with Email OTP, Google OAuth & GitHub OAuth**
+*Secure identity integration featuring Email OTP, Google OAuth & GitHub OAuth*
 
-> **"C the Idea, Bite the Market."**
+---
 
-<br/>
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=white)](#)
+[![Node.js](https://img.shields.io/badge/Node.js-Backend-339933?style=for-the-badge&logo=node.js&logoColor=white)](#)
+[![Express.js](https://img.shields.io/badge/Express.js-API-000000?style=for-the-badge&logo=express&logoColor=white)](#)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Database-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](#)
 
-![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-Backend-339933?style=for-the-badge&logo=node.js&logoColor=white)
-![Express.js](https://img.shields.io/badge/Express.js-API-000000?style=for-the-badge&logo=express&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-Database-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
-
-![Google OAuth](https://img.shields.io/badge/Google-OAuth-4285F4?style=for-the-badge&logo=google&logoColor=white)
-![GitHub OAuth](https://img.shields.io/badge/GitHub-OAuth-181717?style=for-the-badge&logo=github&logoColor=white)
-![JWT](https://img.shields.io/badge/JWT-Authentication-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
-![Nodemailer](https://img.shields.io/badge/Nodemailer-Email_OTP-0F9D58?style=for-the-badge)
+[![Google OAuth](https://img.shields.io/badge/Google-OAuth-4285F4?style=for-the-badge&logo=google&logoColor=white)](#)
+[![GitHub OAuth](https://img.shields.io/badge/GitHub-OAuth-181717?style=for-the-badge&logo=github&logoColor=white)](#)
+[![JWT](https://img.shields.io/badge/JWT-Authentication-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)](#)
+[![Nodemailer](https://img.shields.io/badge/Nodemailer-Email_OTP-0F9D58?style=for-the-badge)](#)
 
 </div>
 
@@ -31,10 +29,10 @@
 CBite is a full-stack web application combining a modern startup landing page with a complete authentication system.
 
 The application provides multiple ways for users to securely access their account through:
-- Email OTP Authentication
-- Google OAuth
-- GitHub OAuth
-- HTTP-Only Cookie Sessions
+- **Email OTP Authentication**: Passwordless verification via time-limited codes.
+- **Google OAuth**: Fast login integration via Google accounts.
+- **GitHub OAuth**: Single sign-on authentication via GitHub profiles.
+- **HTTP-Only Cookie Sessions**: Secure, server-signed session storage.
 
 The backend is built using a structured Node.js + Express.js architecture, with MongoDB for persistent user data and Passport.js for OAuth authentication.
 
@@ -43,33 +41,19 @@ The backend is built using a structured Node.js + Express.js architecture, with 
 ## Key Features
 
 ### Authentication and Session Management
-- 6-digit Email OTP authentication
-- OTP expiration and one-time verification
-- Google OAuth and GitHub OAuth integration
-- Multiple authentication provider linking (email, Google, and GitHub linked to a single account)
-- HTTP-only authentication cookies for session tracking
-- Persistent authentication across browser refreshes
-- Secure logout mechanism with cookie termination
-- Authenticated user profile and session restoration
-- Protected authentication endpoints
+- **6-Digit Email OTP**: Verification codes generated and sent directly to user inboxes.
+- **OTP Expiration Rules**: Cryptographic validation with 5-minute automated expiration.
+- **OAuth Providers**: Out-of-the-box configurations for Google OAuth and GitHub OAuth strategies.
+- **Provider Account Linking**: Automatically links multiple authentication methods matching the same verified email.
+- **HTTP-Only Cookies**: JWT tokens stored securely on the client to protect against XSS/CSRF scripts.
+- **Persistent Login State**: Re-authenticates and restores user profile automatically upon page refreshes.
+- **Clean State Transitions**: Updates navbar elements ("Sign In" ➔ "Account") instantly without full page reloads.
 
-### Backend and Database
-- RESTful API architecture
-- Clean Controller-Service-Model separation
-- MongoDB Atlas integration with Mongoose data modelling
-- Passport.js OAuth strategies
-- JWT-based authentication
-- Custom OTP request rate limiting middleware
-- Centralized Express error handling
-- Environment-based configuration
-- Secure email delivery using Nodemailer (Gmail SMTP)
-
-### Frontend and Interface
-- React + Vite client container
-- Responsive startup landing page with dynamic UI transitions
-- Dynamic login and account state rendering
-- Sign-In status check upon landing page loading
-- Responsive navigation links and authenticated profile views
+### Backend Operations
+- **RESTful API Architecture**: Strict separation of concerns following `Controller` ➔ `Service` ➔ `Model` layouts.
+- **Custom Rate Limiting**: Throttles repeated OTP requests per email or IP to mitigate server spam.
+- **Centralized Error Handling**: Express catcher returning clean, uniform response structures.
+- **Secure Logs**: Suppresses and hides SMTP app passwords and tokens from printing in output files.
 
 ---
 
@@ -122,19 +106,7 @@ The backend follows a layered architecture to separate HTTP handling, authentica
 ### Request Lifecycle
 
 ```text
-Request
-   ↓
-Route
-   ↓
-Middleware
-   ↓
-Controller
-   ↓
-Service
-   ↓
-Model / External Provider
-   ↓
-Response
+Request ➔ Route ➔ Middleware ➔ Controller ➔ Service ➔ Model / Provider ➔ Response
 ```
 
 ---
@@ -147,38 +119,38 @@ cbite-auth/
 ├── backend/
 │   │
 │   ├── src/
-│   │   ├── config/
+│   │   ├── config/               # Database and Passport config
 │   │   │   ├── db.js
 │   │   │   ├── googlePassport.js
 │   │   │   └── githubPassport.js
 │   │   │
-│   │   ├── controllers/
+│   │   ├── controllers/          # HTTP request handlers
 │   │   │   ├── auth.controller.js
 │   │   │   └── otp.controller.js
 │   │   │
-│   │   ├── middleware/
+│   │   ├── middleware/           # Express middlewares
 │   │   │   ├── auth.middleware.js
 │   │   │   ├── error.middleware.js
 │   │   │   └── rateLimiter.middleware.js
 │   │   │
-│   │   ├── models/
+│   │   ├── models/               # Mongoose database schemas
 │   │   │   ├── User.js
 │   │   │   └── Otp.js
 │   │   │
-│   │   ├── routes/
+│   │   ├── routes/               # API route maps
 │   │   │   ├── auth.routes.js
 │   │   │   └── index.js
 │   │   │
-│   │   ├── services/
+│   │   ├── services/             # Core business logic services
 │   │   │   ├── email.service.js
 │   │   │   ├── jwt.service.js
 │   │   │   └── otp.service.js
 │   │   │
-│   │   ├── utils/
+│   │   ├── utils/                # General helpers
 │   │   │   └── asyncHandler.js
 │   │   │
-│   │   ├── app.js
-│   │   └── server.js
+│   │   ├── app.js                # App definition
+│   │   └── server.js             # HTTP listener bootstrap
 │   │
 │   ├── .env.example
 │   ├── .gitignore
@@ -331,7 +303,7 @@ This allows authentication providers to be associated with an existing account w
 | `GET` | `/api/auth/me` | Get authenticated user |
 | `POST` | `/api/auth/logout` | Logout current user |
 
-### System
+### System Check
 
 | Method | Endpoint | Description |
 | :---: | :--- | :--- |
@@ -365,7 +337,7 @@ Account UI displayed
 
 ---
 
-# Security
+# Security Architecture
 
 The backend implements multiple security measures:
 
@@ -381,6 +353,7 @@ The backend implements multiple security measures:
 | **Environment Variables** | Keeps credentials outside source code |
 | **Central Error Handler** | Provides consistent backend error responses |
 
+> [!NOTE]
 > The real `.env` file is excluded from Git and must never be committed.
 
 ---
@@ -415,9 +388,7 @@ authProviders: ["email", "google", "github"]
 
 # Error Handling
 
-The backend uses centralized Express error handling.
-
-Asynchronous controllers use a reusable `asyncHandler` utility so rejected promises can automatically reach the global error middleware.
+The backend uses centralized Express error handling. Asynchronous controllers use a reusable `asyncHandler` utility so rejected promises can automatically reach the global error middleware.
 
 Example error response:
 
@@ -435,13 +406,11 @@ This keeps API error responses consistent and avoids repetitive controller-level
 # Environment Setup
 
 Create a local:
-
 ```text
 backend/.env
 ```
 
-Use `.env.example` as the template.
-
+Use `.env.example` as the template:
 ```env
 PORT=5000
 
@@ -466,6 +435,7 @@ GITHUB_CALLBACK_URL=http://localhost:5000/api/auth/github/callback
 FRONTEND_URL=http://localhost:5173
 ```
 
+> [!WARNING]
 > Use placeholder values in `.env.example`. Never push real credentials to GitHub.
 
 ---
@@ -473,26 +443,15 @@ FRONTEND_URL=http://localhost:5173
 # Run Locally
 
 ## 1. Clone
-
 ```bash
 git clone <repository-url>
 cd cbite-auth
 ```
 
 ## 2. Start Backend
-
 ```bash
 cd backend
 npm install
-```
-
-Create and configure:
-```text
-backend/.env
-```
-
-Then:
-```bash
 npm run dev
 ```
 
@@ -502,11 +461,8 @@ http://localhost:5000
 ```
 
 ## 3. Start Frontend
-
-Open another terminal:
-
 ```bash
-cd frontend
+cd ../frontend
 npm install
 npm run dev
 ```
