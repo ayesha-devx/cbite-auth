@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function About() {
   return (
-    <section id="about" className="py-20 md:py-28 bg-white border-b border-slate-100 scroll-mt-16">
+    <section id="about" className="py-12 sm:py-16 md:py-28 bg-white border-b border-slate-100 scroll-mt-16">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         
         {/* Split Grid Layout */}

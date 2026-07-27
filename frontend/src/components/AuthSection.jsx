@@ -267,7 +267,7 @@ export default function AuthSection({
   };
 
   return (
-    <section id="auth" className="py-20 md:py-28 bg-white border-b border-slate-100 scroll-mt-12">
+    <section id="auth" className="py-12 sm:py-16 md:py-28 bg-white border-b border-slate-100 scroll-mt-12">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
@@ -522,7 +522,7 @@ export default function AuthSection({
                               onKeyDown={(e) => handleOtpKeyDown(e, index)}
                               disabled={isLoading}
                               aria-label={`Digit ${index + 1}`}
-                              className="w-12 h-12 text-center text-xl font-bold bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-blue-500 focus:border-brand-blue-500 transition-all select-none"
+                              className="w-10 h-10 sm:w-12 sm:h-12 text-center text-lg sm:text-xl font-bold bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:ring-2 focus:ring-brand-blue-500 focus:border-brand-blue-500 transition-all select-none min-w-0"
                             />
                           ))}
                         </div>
@@ -593,7 +593,7 @@ export default function AuthSection({
                           <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider">
                             Registered Email
                           </span>
-                          <span className="text-sm font-semibold text-brand-blue-950 block mt-1 select-all">
+                          <span className="text-sm font-semibold text-brand-blue-950 block mt-1 select-all break-all">
                             {user.email}
                           </span>
                         </div>

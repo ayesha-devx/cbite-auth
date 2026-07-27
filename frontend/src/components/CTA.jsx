@@ -17,7 +17,7 @@ export default function CTA() {
   };
 
   return (
-    <section className="relative py-20 bg-brand-navy-900 overflow-hidden text-center">
+    <section className="relative py-12 sm:py-16 md:py-20 bg-brand-navy-900 overflow-hidden text-center">
       {/* Subtle Blue Radial Glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(37,99,235,0.18),transparent_70%)] pointer-events-none"></div>
 

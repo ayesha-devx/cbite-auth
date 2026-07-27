@@ -17,7 +17,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-slate-50 border-b border-slate-100">
+    <section id="hero" className="relative pt-24 pb-12 sm:pt-32 sm:pb-16 md:pt-40 md:pb-28 overflow-hidden bg-slate-50 border-b border-slate-100">
       {/* Background Decorative Graphic */}
       <div className="absolute top-0 right-0 -z-10 w-1/2 h-full opacity-60 pointer-events-none hidden md:block">
         <div className="absolute top-1/4 right-1/4 w-[450px] h-[450px] bg-brand-blue-500/5 rounded-full blur-3xl"></div>
@@ -25,7 +25,7 @@ export default function Hero() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 items-center">
           
           {/* Left Column Content */}
           <div className="md:col-span-7 flex flex-col items-start space-y-6 text-left animate-fade-in">

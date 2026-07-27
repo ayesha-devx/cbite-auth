@@ -16,7 +16,7 @@ export default function Footer({ isAuthenticated }) {
   };
 
   return (
-    <footer className="bg-white border-t border-slate-200/60 py-12 md:py-16 text-left">
+    <footer className="bg-white border-t border-slate-200/60 py-8 sm:py-12 md:py-16 text-left">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 pb-12 border-b border-slate-100">
