@@ -17,7 +17,7 @@
 ![Express.js](https://img.shields.io/badge/Express.js-API-000000?style=for-the-badge&logo=express&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Database-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
 
-![Google OAuth](https://img.shields.io/badge/Google-OAuth_2.0-4285F4?style=flat-square&logo=google&logoColor=white)
+![Google OAuth](https://img.shields.io/badge/Google-OAuth-4285F4?style=flat-square&logo=google&logoColor=white)
 ![GitHub OAuth](https://img.shields.io/badge/GitHub-OAuth-181717?style=flat-square&logo=github&logoColor=white)
 ![JWT](https://img.shields.io/badge/JWT-Authentication-000000?style=flat-square&logo=jsonwebtokens)
 ![Nodemailer](https://img.shields.io/badge/Nodemailer-Email_OTP-0F9D58?style=flat-square)
@@ -32,7 +32,7 @@ CBite is a full-stack web application combining a modern startup landing page wi
 
 The application provides multiple ways for users to securely access their account through:
 - Email OTP Authentication
-- Google OAuth 2.0
+- Google OAuth
 - GitHub OAuth
 - HTTP-Only Cookie Sessions
 
@@ -45,7 +45,7 @@ The backend is built using a structured Node.js + Express.js architecture, with 
 ### Authentication and Session Management
 - 6-digit Email OTP authentication
 - OTP expiration and one-time verification
-- Google OAuth 2.0 and GitHub OAuth integration
+- Google OAuth and GitHub OAuth integration
 - Multiple authentication provider linking (email, Google, and GitHub linked to a single account)
 - HTTP-only authentication cookies for session tracking
 - Persistent authentication across browser refreshes
