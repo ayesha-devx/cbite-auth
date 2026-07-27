@@ -38,10 +38,11 @@ router.get('/google/callback',
 
     // Set secure HTTP-only cookie matching OTP verify settings
     const maxAgeMs = 7 * 24 * 60 * 60 * 1000;
+    const isProduction = process.env.NODE_ENV === 'production';
     res.cookie('token', token, {
       httpOnly: true,
-      sameSite: 'lax',
-      secure: process.env.NODE_ENV === 'production',
+      sameSite: isProduction ? 'none' : 'lax',
+      secure: isProduction,
       maxAge: maxAgeMs,
       path: '/'
     });
@@ -66,10 +67,11 @@ router.get('/github/callback',
 
     // Set secure HTTP-only cookie matching Google/OTP settings
     const maxAgeMs = 7 * 24 * 60 * 60 * 1000;
+    const isProduction = process.env.NODE_ENV === 'production';
     res.cookie('token', token, {
       httpOnly: true,
-      sameSite: 'lax',
-      secure: process.env.NODE_ENV === 'production',
+      sameSite: isProduction ? 'none' : 'lax',
+      secure: isProduction,
       maxAge: maxAgeMs,
       path: '/'
     });

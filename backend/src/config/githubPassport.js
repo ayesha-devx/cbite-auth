@@ -8,11 +8,12 @@ const cookieStateStore = {
   store: (req, cb) => {
     try {
       const state = crypto.randomBytes(16).toString('hex');
+      const isProduction = process.env.NODE_ENV === 'production';
       // Store in secure HTTP-only cookie valid for 10 minutes
       req.res.cookie('oauth_state', state, {
         httpOnly: true,
-        sameSite: 'lax',
-        secure: process.env.NODE_ENV === 'production',
+        sameSite: isProduction ? 'none' : 'lax',
+        secure: isProduction,
         maxAge: 10 * 60 * 1000, // 10 minutes
         path: '/'
       });
@@ -24,11 +25,12 @@ const cookieStateStore = {
   verify: (req, state, cb) => {
     try {
       const storedState = req.cookies?.oauth_state;
+      const isProduction = process.env.NODE_ENV === 'production';
       // Clear cookie immediately after check (prevent replay attacks)
       req.res.clearCookie('oauth_state', {
         httpOnly: true,
-        sameSite: 'lax',
-        secure: process.env.NODE_ENV === 'production',
+        sameSite: isProduction ? 'none' : 'lax',
+        secure: isProduction,
         path: '/'
       });
 

@@ -23,10 +23,11 @@ export const getAuthStatus = asyncHandler(async (req, res) => {
  * Clears the session "token" cookie cleanly from the client.
  */
 export const logout = asyncHandler(async (req, res) => {
+  const isProduction = process.env.NODE_ENV === 'production';
   res.clearCookie('token', {
     httpOnly: true,
-    sameSite: 'lax',
-    secure: process.env.NODE_ENV === 'production',
+    sameSite: isProduction ? 'none' : 'lax',
+    secure: isProduction,
     path: '/'
   });
 

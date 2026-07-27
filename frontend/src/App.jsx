@@ -8,6 +8,7 @@ import Features from './components/Features';
 import AuthSection from './components/AuthSection';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
+import { API_URL } from './config/api';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -16,7 +17,7 @@ function App() {
 
   // Check auth session status on mount
   useEffect(() => {
-    fetch('http://localhost:5000/api/auth/me', { credentials: 'include' })
+    fetch(`${API_URL}/api/auth/me`, { credentials: 'include' })
       .then(async (res) => {
         if (res.ok) {
           const data = await res.json();

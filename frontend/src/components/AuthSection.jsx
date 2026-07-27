@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Mail, ArrowLeft, Loader2, Sparkles, Shield, ArrowRight, LogOut, CheckCircle } from 'lucide-react';
+import { API_URL } from '../config/api';
 
 export default function AuthSection({
   user,
@@ -48,7 +49,7 @@ export default function AuthSection({
 
     setIsLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/auth/otp/send', {
+      const res = await fetch(`${API_URL}/api/auth/otp/send`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email.trim().toLowerCase() })
@@ -75,11 +76,11 @@ export default function AuthSection({
 
   const handleSocialAuth = (provider) => {
     if (provider === 'google') {
-      window.location.href = 'http://localhost:5000/api/auth/google';
+      window.location.href = `${API_URL}/api/auth/google`;
       return;
     }
     if (provider === 'github') {
-      window.location.href = 'http://localhost:5000/api/auth/github';
+      window.location.href = `${API_URL}/api/auth/github`;
       return;
     }
 
@@ -161,7 +162,7 @@ export default function AuthSection({
 
     setIsLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/auth/otp/verify', {
+      const res = await fetch(`${API_URL}/api/auth/otp/verify`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email.trim().toLowerCase(), code }),
@@ -196,7 +197,7 @@ export default function AuthSection({
     setIsLoading(true);
     setStatusMessage(null);
     try {
-      const res = await fetch('http://localhost:5000/api/auth/otp/send', {
+      const res = await fetch(`${API_URL}/api/auth/otp/send`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email.trim().toLowerCase() })
@@ -229,7 +230,7 @@ export default function AuthSection({
   const handleLogout = async () => {
     setIsLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/auth/logout', {
+      const res = await fetch(`${API_URL}/api/auth/logout`, {
         method: 'POST',
         credentials: 'include'
       });
