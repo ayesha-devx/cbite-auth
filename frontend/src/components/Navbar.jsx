@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Layers } from 'lucide-react';
 
-export default function Navbar() {
+export default function Navbar({ isAuthenticated }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -90,15 +90,17 @@ export default function Navbar() {
             onClick={() => scrollToSection('auth')}
             className="text-sm font-medium text-slate-600 hover:text-brand-blue-500 cursor-pointer transition-colors"
           >
-            Sign In
+            {isAuthenticated ? 'Account' : 'Sign In'}
           </button>
           
-          <button
-            onClick={() => scrollToSection('auth')}
-            className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-brand-blue-500 rounded-lg shadow-sm hover:bg-brand-blue-600 hover:shadow-md transition-all active:scale-98 cursor-pointer"
-          >
-            Get Started
-          </button>
+          {!isAuthenticated && (
+            <button
+              onClick={() => scrollToSection('auth')}
+              className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-brand-blue-500 rounded-lg shadow-sm hover:bg-brand-blue-600 hover:shadow-md transition-all active:scale-98 cursor-pointer"
+            >
+              Get Started
+            </button>
+          )}
         </div>
 
         {/* Mobile menu button */}
@@ -144,14 +146,16 @@ export default function Navbar() {
             onClick={() => scrollToSection('auth')}
             className="text-left py-2 text-base font-medium text-slate-600 hover:text-brand-blue-500 transition-colors cursor-pointer"
           >
-            Sign In
+            {isAuthenticated ? 'Account' : 'Sign In'}
           </button>
-          <button
-            onClick={() => scrollToSection('auth')}
-            className="w-full text-center px-5 py-3 text-base font-semibold text-white bg-brand-blue-500 rounded-lg hover:bg-brand-blue-600 shadow-sm transition-colors cursor-pointer"
-          >
-            Get Started
-          </button>
+          {!isAuthenticated && (
+            <button
+              onClick={() => scrollToSection('auth')}
+              className="w-full text-center px-5 py-3 text-base font-semibold text-white bg-brand-blue-500 rounded-lg hover:bg-brand-blue-600 shadow-sm transition-colors cursor-pointer"
+            >
+              Get Started
+            </button>
+          )}
         </div>
       )}
     </nav>

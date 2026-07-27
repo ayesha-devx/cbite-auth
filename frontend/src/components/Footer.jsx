@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Footer() {
+export default function Footer({ isAuthenticated }) {
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -81,7 +81,7 @@ export default function Footer() {
                     onClick={() => scrollToSection('auth')} 
                     className="text-slate-500 hover:text-brand-blue-500 transition-colors cursor-pointer"
                   >
-                    Sign In
+                    {isAuthenticated ? 'Account' : 'Sign In'}
                   </button>
                 </li>
               </ul>

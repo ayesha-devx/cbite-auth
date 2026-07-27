@@ -1,37 +1,22 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Mail, ArrowLeft, Loader2, Sparkles, Shield, ArrowRight, LogOut, CheckCircle } from 'lucide-react';
 
-export default function AuthSection() {
+export default function AuthSection({
+  user,
+  setUser,
+  isAuthenticated,
+  setIsAuthenticated,
+  isInitialLoading,
+  setIsInitialLoading
+}) {
   const [step, setStep] = useState('email'); // 'email' | 'otp'
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
   const [otp, setOtp] = useState(['', '', '', '', '', '']);
   const [isLoading, setIsLoading] = useState(false);
-  const [isInitialLoading, setIsInitialLoading] = useState(true);
   const [statusMessage, setStatusMessage] = useState(null); // { type: 'info' | 'error', text: string }
 
-  const [user, setUser] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
   const otpRefs = useRef([]);
-
-  // Check auth session status on mount
-  useEffect(() => {
-    fetch('http://localhost:5000/api/auth/me', { credentials: 'include' })
-      .then(async (res) => {
-        if (res.ok) {
-          const data = await res.json();
-          setUser(data.user || data.data?.user);
-          setIsAuthenticated(true);
-        }
-      })
-      .catch((err) => {
-        console.error('Session sync error:', err);
-      })
-      .finally(() => {
-        setIsInitialLoading(false);
-      });
-  }, []);
 
   // Clear messages when step changes
   useEffect(() => {
@@ -286,63 +271,90 @@ export default function AuthSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Left Column: Brand & Security Information */}
-          <div className="lg:col-span-6 text-left space-y-6 lg:pr-6">
-            <span className="text-xs font-semibold uppercase tracking-wider text-brand-blue-500">
-              GET STARTED
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-blue-950 tracking-tight leading-tight">
-              Join CBite
-            </h2>
-            <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl">
-              Sign in or create your CBite account to start exploring what's possible.
-            </p>
+          <div className="lg:col-span-6 text-left space-y-6 lg:pr-6 animate-fade-in">
+            {isAuthenticated ? (
+              <>
+                <span className="text-xs font-semibold uppercase tracking-wider text-brand-blue-500">
+                  WELCOME TO CBITE
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-blue-950 tracking-tight leading-tight">
+                  You're All Set.
+                </h2>
+                <p className="text-sm sm:text-base text-slate-605 leading-relaxed max-w-xl font-light">
+                  You're signed in and ready to explore CBite. Turn ideas into possibilities and discover what's next.
+                </p>
 
-            <div className="pt-4 border-t border-slate-100 space-y-4">
-              <h4 className="text-sm font-bold text-brand-blue-950 uppercase tracking-wider">
-                Multiple ways to sign in
-              </h4>
-              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
-                Continue with Google or GitHub, or use your email address to receive a one-time verification code.
-              </p>
-            </div>
+                <div className="pt-4 border-t border-slate-100 space-y-4">
+                  <h4 className="text-sm font-bold text-brand-blue-950 uppercase tracking-wider">
+                    Innovation Lifecycle
+                  </h4>
+                  <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
+                    From your first idea to what comes next, CBite is built around turning possibilities into meaningful digital experiences.
+                  </p>
+                </div>
 
-            <ul className="space-y-4 pt-2">
-              <li className="flex items-start space-x-3">
-                <div className="mt-0.5 w-5 h-5 rounded-full bg-brand-blue-50 flex items-center justify-center text-brand-blue-500 shrink-0">
-                  <Shield className="w-3 h-3" />
+                {/* Pipeline visual representation */}
+                <div className="flex items-center space-x-2 py-4 px-5 bg-slate-50 border border-slate-200/60 rounded-2xl max-w-sm mt-4">
+                  <span className="text-xs font-black text-slate-400 uppercase tracking-widest mr-1">Pipeline</span>
+                  <span className="text-[10px] font-extrabold text-brand-blue-950 uppercase">IDEA</span>
+                  <span className="text-slate-350">→</span>
+                  <span className="text-[10px] font-extrabold text-brand-blue-500 uppercase">BUILD</span>
+                  <span className="text-slate-350">→</span>
+                  <span className="text-[10px] font-extrabold text-brand-blue-500 uppercase">LAUNCH</span>
+                  <span className="text-slate-350">→</span>
+                  <span className="text-[10px] font-extrabold text-emerald-500 uppercase">GROW</span>
                 </div>
-                <div>
-                  <h4 className="text-sm font-semibold text-brand-blue-950 font-sans">Email OTP</h4>
-                  <p className="text-xs text-slate-500 mt-0.5">Authentication option to receive a 6-digit one-time verification code sent directly to your inbox.</p>
+              </>
+            ) : (
+              <>
+                <span className="text-xs font-semibold uppercase tracking-wider text-brand-blue-500">
+                  GET STARTED
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-blue-950 tracking-tight leading-tight">
+                  Join CBite
+                </h2>
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl">
+                  Sign in or create your CBite account to start exploring what's possible.
+                </p>
+
+                <div className="pt-4 border-t border-slate-100 space-y-4">
+                  <h4 className="text-sm font-bold text-brand-blue-950 uppercase tracking-wider">
+                    Multiple ways to sign in
+                  </h4>
+                  <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
+                    Continue with Google or GitHub, or use your email address to receive a one-time verification code.
+                  </p>
                 </div>
-              </li>
-              <li className="flex items-start space-x-3">
-                <div className="mt-0.5 w-5 h-5 rounded-full bg-brand-blue-50 flex items-center justify-center text-brand-blue-500 shrink-0">
-                  <Sparkles className="w-3 h-3" />
-                </div>
-                <div>
-                  <h4 className="text-sm font-semibold text-brand-blue-950 font-sans">Google & GitHub Sign-In</h4>
-                  <p className="text-xs text-slate-500 mt-0.5">Authentication options to sign in using your existing Google or GitHub account credentials.</p>
-                </div>
-              </li>
-            </ul>
+
+                <ul className="space-y-4 pt-2">
+                  <li className="flex items-start space-x-3">
+                    <div className="mt-0.5 w-5 h-5 rounded-full bg-brand-blue-50 flex items-center justify-center text-brand-blue-500 shrink-0">
+                      <Shield className="w-3 h-3" />
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-semibold text-brand-blue-950 font-sans">Email OTP</h4>
+                      <p className="text-xs text-slate-500 mt-0.5">Authentication option to receive a 6-digit one-time verification code sent directly to your inbox.</p>
+                    </div>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <div className="mt-0.5 w-5 h-5 rounded-full bg-brand-blue-50 flex items-center justify-center text-brand-blue-500 shrink-0">
+                      <Sparkles className="w-3 h-3" />
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-semibold text-brand-blue-950 font-sans">Google & GitHub Sign-In</h4>
+                      <p className="text-xs text-slate-500 mt-0.5">Authentication options to sign in using your existing Google or GitHub account credentials.</p>
+                    </div>
+                  </li>
+                </ul>
+              </>
+            )}
           </div>
 
           {/* Right Column: Auth Card */}
           <div className="lg:col-span-6 flex justify-center w-full">
             <div className="w-full max-w-md bg-white border border-slate-200/80 rounded-2xl shadow-lg p-8 relative overflow-hidden">
               
-              {/* CBite branding top bar */}
-              <div className="flex items-center space-x-2.5 mb-6">
-                <div className="h-7 w-7 overflow-hidden flex items-center justify-center rounded-md bg-white border border-slate-150 shadow-3xs shrink-0">
-                  <img 
-                    src="/assets/logo.png" 
-                    alt="CBite logo mark" 
-                    className="h-11 w-11 max-w-none object-contain -translate-y-[4.5px]" 
-                  />
-                </div>
-                <span className="text-sm font-bold text-brand-blue-950">CBite</span>
-              </div>
+
 
               {/* Status Notifications Panel */}
               {statusMessage && (

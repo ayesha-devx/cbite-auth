@@ -115,7 +115,6 @@ export const sendOtpEmail = async (email, code) => {
       <body>
         <div class="container">
           <div class="header">
-            <div class="logo-mark">C</div>
             <span class="brand-name">CBite</span>
           </div>
           <h2>Verify your account</h2>

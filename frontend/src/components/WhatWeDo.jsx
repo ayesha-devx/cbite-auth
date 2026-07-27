@@ -40,10 +40,10 @@ export default function WhatWeDo() {
           {services.map((service, idx) => (
             <div
               key={idx}
-              className="bg-white border border-slate-200/80 rounded-2xl p-8 hover:border-brand-blue-500/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group text-left flex flex-col justify-between h-full"
+              className="bg-white border border-slate-200/60 rounded-3xl p-8 md:p-10 hover:border-brand-blue-500/40 hover:shadow-[0_20px_50px_rgba(37,99,235,0.05)] hover:-translate-y-1.5 transition-all duration-350 group text-left flex flex-col justify-between h-full relative overflow-hidden"
             >
               <div>
-                <div className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center transition-colors group-hover:bg-brand-blue-50 mb-8">
+                <div className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center transition-all duration-300 group-hover:bg-brand-blue-50 group-hover:scale-105 mb-8">
                   {service.icon}
                 </div>
 
