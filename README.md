@@ -2,11 +2,13 @@
   <img src="frontend/public/assets/logo.png" alt="CBite Logo" width="80" />
 </p>
 
-# CBite
+<h1 align="center">CBite</h1>
 
-**C the Idea, Bite the Market.**
+<p align="center"><strong>C the Idea, Bite the Market.</strong></p>
 
+<p align="center">
 CBite is a modern, full-stack authentication platform built with React and Express.js, featuring multi-provider OAuth (Google, GitHub), secure email OTP verification via the Resend API, and JWT-based session management. Designed with a responsive, premium landing page and production-grade deployment architecture.
+</p>
 
 ---
 
