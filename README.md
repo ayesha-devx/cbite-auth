@@ -1,3 +1,7 @@
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/ayesha-devx/cbite-auth/main/frontend/public/assets/logo.png" width="120" alt="CBite Logo" />
+
 # CBite
 
 ### Full-Stack Authentication & Digital Platform
@@ -17,6 +21,8 @@
 ![GitHub OAuth](https://img.shields.io/badge/GitHub-OAuth-181717?style=flat-square&logo=github&logoColor=white)
 ![JWT](https://img.shields.io/badge/JWT-Authentication-000000?style=flat-square&logo=jsonwebtokens)
 ![Nodemailer](https://img.shields.io/badge/Nodemailer-Email_OTP-0F9D58?style=flat-square)
+
+</div>
 
 ---
 
