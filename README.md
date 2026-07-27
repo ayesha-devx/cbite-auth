@@ -20,7 +20,7 @@ CBite is a modern, full-stack authentication platform built with React and Expre
 ## Features
 
 ### Authentication
-- **Google OAuth 2.0** — One-click sign-in via Google account
+- **Google OAuth** — One-click sign-in via Google account
 - **GitHub OAuth** — One-click sign-in via GitHub account
 - **Email OTP** — Passwordless email verification with 6-digit codes
 - **JWT Session Management** — Secure HTTP-only cookie-based authentication
@@ -98,7 +98,7 @@ User enters email address
 | **Frontend** | React 19, Vite 8, Tailwind CSS 4, Lucide React |
 | **Backend** | Node.js, Express 5, Passport.js |
 | **Database** | MongoDB Atlas, Mongoose 9 |
-| **Authentication** | Google OAuth 2.0, GitHub OAuth, Email OTP, JWT |
+| **Authentication** | Google OAuth, GitHub OAuth, Email OTP, JWT |
 | **Email Delivery** | Resend HTTP API |
 | **Security** | Helmet, CORS, HMAC-SHA256, cookie-parser |
 | **Frontend Hosting** | Vercel |
@@ -113,7 +113,7 @@ graph TB
     Client["React Frontend<br/>(Vercel)"]
     API["Express REST API<br/>(Render)"]
     DB["MongoDB Atlas"]
-    Google["Google OAuth 2.0"]
+    Google["Google OAuth"]
     GitHub["GitHub OAuth"]
     Resend["Resend Email API"]
 
