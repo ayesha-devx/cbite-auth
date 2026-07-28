@@ -114,31 +114,7 @@ User enters email address
 
 ## System Architecture
 
-```mermaid
-graph TB
-    Client["React Frontend<br/>(Vercel)"]
-    API["Express REST API<br/>(Render)"]
-    DB["MongoDB Atlas"]
-    Google["Google OAuth"]
-    GitHub["GitHub OAuth"]
-    Resend["Resend Email API"]
-
-    Client -->|"API Requests<br/>(HTTPS + Cookies)"| API
-    API -->|"User & OTP Data"| DB
-    API -->|"OAuth Flow"| Google
-    API -->|"OAuth Flow"| GitHub
-    API -->|"Send OTP Email"| Resend
-
-    Google -->|"Callback"| API
-    GitHub -->|"Callback"| API
-
-    style Client fill:#2563eb,stroke:#1e40af,color:#fff
-    style API fill:#0f172a,stroke:#334155,color:#fff
-    style DB fill:#16a34a,stroke:#15803d,color:#fff
-    style Google fill:#ea4335,stroke:#dc2626,color:#fff
-    style GitHub fill:#333,stroke:#555,color:#fff
-    style Resend fill:#8b5cf6,stroke:#7c3aed,color:#fff
-```
+![System Architecture](https://mermaid.ink/img/Z3JhcGggVEIKICAgIENsaWVudFtSZWFjdCBGcm9udGVuZCBWZXJjZWxdCiAgICBBUElbRXhwcmVzcyBSRVNUIEFQSSBSZW5kZXJdCiAgICBEQltNb25nb0RCIEF0bGFzXQogICAgR29vZ2xlW0dvb2dsZSBPQXV0aF0KICAgIEdpdEh1YltHaXRIdWIgT0F1dGhdCiAgICBSZXNlbmRbUmVzZW5kIEVtYWlsIEFQSV0KICAgIENsaWVudCAtLT58QVBJIFJlcXVlc3RzIEhUVFBTK0Nvb2tpZXN8IEFQSQogICAgQVBJIC0tPnxVc2VyIGFuZCBPVFAgRGF0YXwgREIKICAgIEFQSSAtLT58T0F1dGggRmxvd3wgR29vZ2xlCiAgICBBUEkgLS0+fE9BdXRoIEZsb3d8IEdpdEh1YgogICAgQVBJIC0tPnxTZW5kIE9UUCBFbWFpbHwgUmVzZW5kCiAgICBHb29nbGUgLS0+fENhbGxiYWNrfCBBUEkKICAgIEdpdEh1YiAtLT58Q2FsbGJhY2t8IEFQSQogICAgc3R5bGUgQ2xpZW50IGZpbGw6IzI1NjNlYixzdHJva2U6IzFlNDBhZixjb2xvcjojZmZmCiAgICBzdHlsZSBBUEkgZmlsbDojMGYxNzJhLHN0cm9rZTojMzM0MTU1LGNvbG9yOiNmZmYKICAgIHN0eWxlIERCIGZpbGw6IzE2YTM0YSxzdHJva2U6IzE1ODAzZCxjb2xvcjojZmZmCiAgICBzdHlsZSBHb29nbGUgZmlsbDojZWE0MzM1LHN0cm9rZTojZGMyNjI2LGNvbG9yOiNmZmYKICAgIHN0eWxlIEdpdEh1YiBmaWxsOiMzMzMsc3Ryb2tlOiM1NTUsY29sb3I6I2ZmZgogICAgc3R5bGUgUmVzZW5kIGZpbGw6IzhiNWNmNixzdHJva2U6IzdjM2FlZCxjb2xvcjojZmZm)
 
 ---
 
