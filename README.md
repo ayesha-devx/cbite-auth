@@ -19,8 +19,6 @@ CBite is a modern, full-stack authentication platform built with React and Expre
 | **Frontend** | [https://cbite-auth.vercel.app](https://cbite-auth.vercel.app) |
 | **Backend API** | [https://cbite-auth.onrender.com](https://cbite-auth.onrender.com) |
 
-> **Note:** The backend is hosted on Render's free tier. After periods of inactivity, the first request may take 30–60 seconds while the service cold-starts.
-
 ---
 
 ## Features
